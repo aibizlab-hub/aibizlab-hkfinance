@@ -60,20 +60,19 @@ TRACK = """<script data-goatcounter="https://aibizlab.goatcounter.com/count.js" 
 
 SIGNUP = f"""<div class="signup"><h3>📬 免費「週週增值」理財通訊</h3>
 <p>每週一封：香港理財乾貨、被動收入點子、悭錢實戰。直接入你 inbox。</p>
-<form action="https://formsubmit.co/FORMSUBMIT_FORM_ID" method="POST">
-<input type="email" name="email" placeholder="你的電郵地址" required>
-<input type="hidden" name="_subject" value="HK Money Lab 新訂閱">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_next" value="{SITE_URL}/">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScCxi_w7f8Ep2hqylOLt9LSbOdzfATiV2g6GKmg1LAjxBhYvg/formResponse" method="POST" target="_blank">
+<input type="hidden" name="entry.343764206" value="HK 理財通訊訂閱">
+<input type="email" name="entry.324733833" placeholder="你的電郵地址" required>
+<input type="hidden" name="entry.29427835" value="訂閱 HK 理財通訊">
 <button type="submit">免費訂閱</button>
 </form></div>"""
 
 AFFILIATE = """<div class="aff"><h3>💸 幫我賣，賺 50% 佣金</h3>
 <p>鍾意呢啲產品？成為我哋嘅 Gumroad 聯盟推廣人，搵人買就分你一半。零成本、零庫存。</p>
-<form action="https://formsubmit.co/FORMSUBMIT_FORM_ID" method="POST">
-<input type="email" name="email" placeholder="你的電郵地址" required>
-<input type="hidden" name="_subject" value="聯盟推廣申請">
-<input type="hidden" name="_captcha" value="false">
+<form action="https://docs.google.com/forms/d/e/1FAIpQLScCxi_w7f8Ep2hqylOLt9LSbOdzfATiV2g6GKmg1LAjxBhYvg/formResponse" method="POST" target="_blank">
+<input type="hidden" name="entry.343764206" value="聯盟推廣申請">
+<input type="email" name="entry.324733833" placeholder="你的電郵地址" required>
+<input type="hidden" name="entry.29427835" value="想做聯盟推廣人">
 <button type="submit">拎聯盟連結</button>
 </form></div>"""
 
