@@ -7,7 +7,7 @@ secondary_keywords:
   - "Excel 資產負債表"
   - "投資組合 tracker"
 slug: "hk-finance-excel-templates"
-canonical: "https://ken851004-afk.github.io/aibizlab-hkfinance/hk-finance-excel-templates"
+canonical: "https://aibizlab-hub.github.io/aibizlab-hkfinance/hk-finance-excel-templates"
 ---
 
 ## 點解香港人更需要 Excel 理財

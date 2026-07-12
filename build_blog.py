@@ -7,7 +7,7 @@ SRC = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(SRC, "site")
 os.makedirs(OUT, exist_ok=True)
 
-SITE_URL = "https://ken851004-afk.github.io/aibizlab-hkfinance"
+SITE_URL = "https://aibizlab-hub.github.io/aibizlab-hkfinance"
 
 PRODUCTS = [
     ("📈 Investment Portfolio Tracker (Excel)", "https://gumroad.com/products/ocqse", "HK$12"),
@@ -60,7 +60,7 @@ TRACK = """<script data-goatcounter="https://aibizlab.goatcounter.com/count.js" 
 
 SIGNUP = f"""<div class="signup"><h3>📬 免費「週週增值」理財通訊</h3>
 <p>每週一封：香港理財乾貨、被動收入點子、悭錢實戰。直接入你 inbox。</p>
-<form action="https://formsubmit.co/KEN851004@gmail.com" method="POST">
+<form action="https://formsubmit.co/aibizlab" method="POST">
 <input type="email" name="email" placeholder="你的電郵地址" required>
 <input type="hidden" name="_subject" value="HK Money Lab 新訂閱">
 <input type="hidden" name="_captcha" value="false">
@@ -70,7 +70,12 @@ SIGNUP = f"""<div class="signup"><h3>📬 免費「週週增值」理財通訊</
 
 AFFILIATE = """<div class="aff"><h3>💸 幫我賣，賺 50% 佣金</h3>
 <p>鍾意呢啲產品？成為我哋嘅 Gumroad 聯盟推廣人，搵人買就分你一半。零成本、零庫存。</p>
-<div class="prod-grid"><div class="prod"><a href="mailto:KEN851004@gmail.com?subject=想做聯盟推廣">✉️ 電郵拎聯盟連結</a><br><span>回覆附專屬推廣 URL</span></div></div></div>"""
+<form action="https://formsubmit.co/aibizlab" method="POST">
+<input type="email" name="email" placeholder="你的電郵地址" required>
+<input type="hidden" name="_subject" value="聯盟推廣申請">
+<input type="hidden" name="_captcha" value="false">
+<button type="submit">拎聯盟連結</button>
+</form></div>"""
 
 def parse_frontmatter(text):
     if not text.startswith("---"):
@@ -106,7 +111,7 @@ def render_index(posts):
 {SIGNUP}
 {AFFILIATE}
 </div>
-<footer class="site">© 2026 HK Money Lab · Built with an automated content pipeline<br>🔗 姊妹站：<a href="https://ken851004-afk.github.io/aibizlab-blog/" style="color:var(--link)">AI Business Lab</a> — 數碼產品 × AI 被動收入</footer></body></html>"""
+<footer class="site">© 2026 HK Money Lab · Built with an automated content pipeline<br>🔗 姊妹站：<a href="https://aibizlab-hub.github.io/aibizlab-blog/" style="color:var(--link)">AI Business Lab</a> — 數碼產品 × AI 被動收入</footer></body></html>"""
     return html
 
 def main():
@@ -138,7 +143,7 @@ def main():
 <div class="cta">💡 <strong>我們的 Gumroad 店：</strong><div class="prod-grid">""" + "".join(f'<div class="prod"><a href="{u}">{n}</a><br><span>{pr}</span></div>' for n,u,pr in PRODUCTS) + """</div></div>
 {SIGNUP}
 {AFFILIATE}
-</div><footer class="site">© 2026 HK Money Lab<br>🔗 姊妹站：<a href="https://ken851004-afk.github.io/aibizlab-blog/" style="color:var(--link)">AI Business Lab</a></footer></body></html>"""
+</div><footer class="site">© 2026 HK Money Lab<br>🔗 姊妹站：<a href="https://aibizlab-hub.github.io/aibizlab-blog/" style="color:var(--link)">AI Business Lab</a></footer></body></html>"""
         open(os.path.join(OUT, out_name), "w", encoding="utf-8").write(page)
         posts.append({"title": title, "desc": desc, "html": out_name})
         print("built:", out_name)

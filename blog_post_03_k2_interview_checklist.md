@@ -7,7 +7,7 @@ secondary_keywords:
   - "小一面試 checklist"
   - "升小 準備 時間表"
 slug: "k2-interview-checklist"
-canonical: "https://ken851004-afk.github.io/aibizlab-hkfinance/k2-interview-checklist"
+canonical: "https://aibizlab-hub.github.io/aibizlab-hkfinance/k2-interview-checklist"
 ---
 
 ## 升小面試，準備定就唔慌

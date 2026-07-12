@@ -7,7 +7,7 @@ secondary_keywords:
   - "香港人 賺外快"
   - "數碼產品 被動收入"
 slug: "passive-income-hk-2026"
-canonical: "https://ken851004-afk.github.io/aibizlab-hkfinance/passive-income-hk-2026"
+canonical: "https://aibizlab-hub.github.io/aibizlab-hkfinance/passive-income-hk-2026"
 ---
 
 ## 被動收入唔係神話，係系統
