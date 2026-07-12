@@ -29,6 +29,13 @@ jobs:
         run: pip install markdown
       - name: Build site
         run: python build_blog.py
+      - name: PII guard
+        run: |
+          if grep -rniE "ken851004|851004|1985-10-04|chan tak kin|KEN851004" site/; then
+            echo "::error::PII detected in public site — aborting deploy"
+            exit 1
+          fi
+          echo "PII guard passed"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
