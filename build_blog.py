@@ -106,7 +106,7 @@ def render_index(posts):
 {SIGNUP}
 {AFFILIATE}
 </div>
-<footer class="site">© 2026 HK Money Lab · Built with an automated content pipeline</footer></body></html>"""
+<footer class="site">© 2026 HK Money Lab · Built with an automated content pipeline<br>🔗 姊妹站：<a href="https://ken851004-afk.github.io/aibizlab-blog/" style="color:var(--link)">AI Business Lab</a> — 數碼產品 × AI 被動收入</footer></body></html>"""
     return html
 
 def main():
@@ -138,7 +138,7 @@ def main():
 <div class="cta">💡 <strong>我們的 Gumroad 店：</strong><div class="prod-grid">""" + "".join(f'<div class="prod"><a href="{u}">{n}</a><br><span>{pr}</span></div>' for n,u,pr in PRODUCTS) + """</div></div>
 {SIGNUP}
 {AFFILIATE}
-</div><footer class="site">© 2026 HK Money Lab</footer></body></html>"""
+</div><footer class="site">© 2026 HK Money Lab<br>🔗 姊妹站：<a href="https://ken851004-afk.github.io/aibizlab-blog/" style="color:var(--link)">AI Business Lab</a></footer></body></html>"""
         open(os.path.join(OUT, out_name), "w", encoding="utf-8").write(page)
         posts.append({"title": title, "desc": desc, "html": out_name})
         print("built:", out_name)
