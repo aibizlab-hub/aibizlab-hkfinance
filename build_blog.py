@@ -60,7 +60,7 @@ TRACK = """<script data-goatcounter="https://aibizlab.goatcounter.com/count.js" 
 
 SIGNUP = f"""<div class="signup"><h3>📬 免費「週週增值」理財通訊</h3>
 <p>每週一封：香港理財乾貨、被動收入點子、悭錢實戰。直接入你 inbox。</p>
-<form action="https://formsubmit.co/aibizlab" method="POST">
+<form action="https://formsubmit.co/FORMSUBMIT_FORM_ID" method="POST">
 <input type="email" name="email" placeholder="你的電郵地址" required>
 <input type="hidden" name="_subject" value="HK Money Lab 新訂閱">
 <input type="hidden" name="_captcha" value="false">
@@ -70,7 +70,7 @@ SIGNUP = f"""<div class="signup"><h3>📬 免費「週週增值」理財通訊</
 
 AFFILIATE = """<div class="aff"><h3>💸 幫我賣，賺 50% 佣金</h3>
 <p>鍾意呢啲產品？成為我哋嘅 Gumroad 聯盟推廣人，搵人買就分你一半。零成本、零庫存。</p>
-<form action="https://formsubmit.co/aibizlab" method="POST">
+<form action="https://formsubmit.co/FORMSUBMIT_FORM_ID" method="POST">
 <input type="email" name="email" placeholder="你的電郵地址" required>
 <input type="hidden" name="_subject" value="聯盟推廣申請">
 <input type="hidden" name="_captcha" value="false">
