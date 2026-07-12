@@ -59,7 +59,7 @@ footer.site{text-align:center;color:var(--muted);font-size:13px;padding:30px 20p
 TRACK = """<script data-goatcounter="https://aibizlab.goatcounter.com/count.js" async src="//gc.goatcounter.com/count.js"></script>"""
 
 SIGNUP = f"""<div class="signup"><h3>📬 免費「週週增值」理財通訊</h3>
-<p>每週一封：香港理財乾貨、被動收入點子、悭錢實戰。直接入你 inbox。</p>
+<p>每週一封：香港理財乾貨、被動收入點子、慳錢實戰。直接入你 inbox。</p>
 <form action="https://docs.google.com/forms/d/e/1FAIpQLScCxi_w7f8Ep2hqylOLt9LSbOdzfATiV2g6GKmg1LAjxBhYvg/formResponse" method="POST" target="_blank">
 <input type="hidden" name="entry.343764206" value="HK 理財通訊訂閱">
 <input type="email" name="entry.324733833" placeholder="你的電郵地址" required>
@@ -67,7 +67,7 @@ SIGNUP = f"""<div class="signup"><h3>📬 免費「週週增值」理財通訊</
 <button type="submit">免費訂閱</button>
 </form></div>"""
 
-AFFILIATE = """<div class="aff"><h3>💸 幫我賣，賺 50% 佣金</h3>
+AFFILIATE = """<div class="aff"><h3>💸 幫我賣，賺 50% 傭金</h3>
 <p>鍾意呢啲產品？成為我哋嘅 Gumroad 聯盟推廣人，搵人買就分你一半。零成本、零庫存。</p>
 <form action="https://docs.google.com/forms/d/e/1FAIpQLScCxi_w7f8Ep2hqylOLt9LSbOdzfATiV2g6GKmg1LAjxBhYvg/formResponse" method="POST" target="_blank">
 <input type="hidden" name="entry.343764206" value="聯盟推廣申請">
