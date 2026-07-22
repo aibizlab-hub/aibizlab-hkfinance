@@ -10,7 +10,7 @@
 // without manually clearing cache. Runs before data scripts load.
 (function(){
   try{
-    var CURRENT=4;
+    var CURRENT=5;
     fetch('version.json',{cache:'no-store'}).then(function(r){return r.json();}).then(function(j){
       if(j && typeof j.v==='number' && j.v!==CURRENT){ location.reload(true); }
     }).catch(function(){});
@@ -47,13 +47,14 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 14px;bor
 <div class="meta" id="meta">載入中…</div>
 <div id="results"></div>
 </div>
-<footer>Manulife KB v4 (2026-07-22) · 永久網址：aibizlab-hub.github.io/aibizlab-hkfinance/manulife-kb · 公開產品文件，無個人資料</footer>
-<script src="kb_data0.js?v=4"></script>
-<script src="kb_data1.js?v=4"></script>
-<script src="kb_data2.js?v=4"></script>
-<script src="kb_data3.js?v=4"></script>
-<script src="kb_data4.js?v=4"></script>
-<script src="kb_data5.js?v=4"></script>
+<footer>Manulife KB v5 (2026-07-22) · 永久網址：aibizlab-hub.github.io/aibizlab-hkfinance/manulife-kb · 公開產品文件，無個人資料</footer>
+<script>window.__KB=window.__KB||[];</script>
+<script src="kb_data0.js?v=5"></script>
+<script src="kb_data1.js?v=5"></script>
+<script src="kb_data2.js?v=5"></script>
+<script src="kb_data3.js?v=5"></script>
+<script src="kb_data4.js?v=5"></script>
+<script src="kb_data5.js?v=5"></script>
 <script>
 (function(){
   var DOCS=window.__KB||[];
@@ -75,6 +76,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 14px;bor
   qEl.addEventListener('keydown',function(e){if(e.key==='Enter')doSearch();});
   document.getElementById('go').addEventListener('click',doSearch);
   render("");
+  window.__kbSearch=search;window.__kbDOCS=DOCS; // debug hooks (harmless)
 })();
 </script>
 </body></html>
