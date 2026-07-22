@@ -4,7 +4,7 @@
 <style>
 :root{--bg:#0f1117;--card:#1a1d27;--fg:#e8eaf0;--muted:#9aa3b2;--accent:#ff5e5b;--link:#6ea8fe}
 *{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
+body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Microsoft YaHei",sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
 header{padding:22px 18px 10px;text-align:center;border-bottom:1px solid #2c3040}
 header h1{margin:0;font-size:22px}
 header p{margin:4px 0 0;color:var(--muted);font-size:13px}
@@ -13,15 +13,18 @@ header p{margin:4px 0 0;color:var(--muted);font-size:13px}
 .meta{color:var(--muted);font-size:13px;margin:12px 2px}
 .r{background:var(--card);border:1px solid #2c3040;border-radius:12px;padding:14px 16px;margin-bottom:12px}
 .r h3{margin:0 0 3px;font-size:16px}
-.r .f{color:var(--link);font-size:12px;word-break:break-all}
+.r .f{font-size:12px;margin-top:4px}
+.r .f a{color:var(--link);text-decoration:none}
+.r .f a:hover{text-decoration:underline}
 .r .s{color:#d6dae3;font-size:13px;margin-top:5px}
 .hl{background:#3a2d12;color:#ffd479;border-radius:3px;padding:0 2px}
+.tag{display:inline-block;background:#232838;color:var(--muted);font-size:11px;padding:1px 7px;border-radius:6px;margin-left:6px}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 14px;border-top:1px solid #2c3040}
 </style></head>
 <body><header><h1>🏦 宏利保險知識庫 Manulife KB</h1>
 <p>產品小冊 · 條款 · 表格 · 醫院網絡 · 理賠手續（公開產品文件，無個人資料）</p></header>
 <div class="wrap">
-<input id="q" placeholder="用自然語言查，例如：小朋友 VHIS 改保單持有人 / 入院 去邊間醫院 理賠手續" autofocus>
+<input id="q" placeholder="用自然語言查，例如：危疾保險 / VHIS 自願醫保 / 死亡證明書 索償 / 更改保單持有人" autofocus>
 <div class="meta" id="meta">載入中…</div>
 <div id="results"></div>
 </div>
@@ -37,13 +40,17 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 14px;bor
   var DOCS=window.__KB||[];
   var IDX={};
   function tok(s){s=(s||"").toLowerCase();return s.split(/[^a-z0-9一-鿿]+/).filter(Boolean);}
-  DOCS.forEach(function(d,id){d._t=tok(d.t+" "+(d.s||""));d._tl=(d.t||"").toLowerCase();d._fl=(d.f||"").toLowerCase();d._t.forEach(function(w){(IDX[w]=IDX[w]||[]).push(id);});});
+  // index title + filename + snippet so both code (C01/VHIS) and Chinese body text are searchable
+  DOCS.forEach(function(d,id){d._t=tok((d.t||"")+" "+(d.f||"")+" "+(d.s||""));d._tl=(d.t||"").toLowerCase();d._fl=(d.f||"").toLowerCase();d._t.forEach(function(w){(IDX[w]=IDX[w]||[]).push(id);});});
   var qEl=document.getElementById('q'),resEl=document.getElementById('results'),metaEl=document.getElementById('meta');
   metaEl.textContent=DOCS.length+" 份文件已載入 · 輸入關鍵字即時搜尋";
   function esc(s){return (s||"").replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
   function hl(s,q){s=esc(s);(q||"").toLowerCase().split(/[^a-z0-9一-鿿]+/).filter(Boolean).forEach(function(w){if(!w)return;var re=new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');s=s.replace(re,function(m){return '<span class=hl>'+m+'</span>';});});return s;}
-  function search(q){var qt=tok(q),score={};qt.forEach(function(w){(IDX[w]||[]).forEach(function(id){score[id]=(score[id]||0)+1;});});var ql=q.toLowerCase();Object.keys(score).forEach(function(k){var id=+k,d=DOCS[id];if(d._tl.indexOf(ql)>=0)score[id]+=8;if(d._fl.indexOf(ql)>=0)score[id]+=5;});return Object.keys(score).map(Number).sort(function(a,b){return score[b]-score[a];}).slice(0,12);}
-  function render(q){if(!q.trim()){metaEl.textContent=DOCS.length+" 份文件已載入 · 輸入關鍵字即時搜尋";resEl.innerHTML="";return;}var hits=search(q);metaEl.textContent=hits.length?("搵到 "+hits.length+" 個相關結果"):"冇搵到，試下其他字眼";resEl.innerHTML=hits.map(function(id){var d=DOCS[id];return '<div class="r"><h3>'+esc(d.t)+'</h3><div class="f">'+esc(d.f)+'</div><div class="s">'+hl(d.s||"",q)+'</div></div>';}).join("");}
+  // HK insurance terminology synonyms so common variants all match.
+  var SYN={ '理賠':['索償'], '索償':['理賠'], '危疾':['重大疾病','重病'], '重大疾病':['危疾'], '住院':['入院','醫院'], '醫療':['醫院','保健'] };
+  function expand(q){var parts=[q];for(var k in SYN){if(q.indexOf(k)>=0){SYN[k].forEach(function(s){if(q.indexOf(s)<0)parts.push(s);});}}return parts.join(' ');}
+  function search(q){var qt=tok(q),score={};qt.forEach(function(w){(IDX[w]||[]).forEach(function(id){score[id]=(score[id]||0)+1;});});var ql=q.toLowerCase();Object.keys(score).forEach(function(k){var id=+k,d=DOCS[id];if(d._tl.indexOf(ql)>=0)score[id]+=8;if(d._fl.indexOf(ql)>=0)score[id]+=5;});return Object.keys(score).map(Number).sort(function(a,b){return score[b]-score[a];}).slice(0,15);}
+  function render(q){if(!q.trim()){metaEl.textContent=DOCS.length+" 份文件已載入 · 輸入關鍵字即時搜尋";resEl.innerHTML="";return;}var eq=expand(q);var hits=search(eq);metaEl.textContent=hits.length?("搵到 "+hits.length+" 個相關結果"):"冇搵到，試下其他字眼（如產品名 / 表碼 / 關鍵詞）";resEl.innerHTML=hits.map(function(id){var d=DOCS[id];var link=encodeURI('pdfs/'+d.f);var full=d.s||"";var prev=full.slice(0,280)+(full.length>280?"…":"");return '<div class="r"><h3>'+esc(d.t)+'<span class="tag">'+(d.f||"")+'</span></h3><div class="f"><a href="'+link+'" target="_blank" rel="noopener">📄 開啟 PDF：'+(d.f||"")+'</a></div><div class="s">'+hl(prev,eq)+'</div></div>';}).join("");}
   qEl.addEventListener('input',function(){render(qEl.value);});render("");
 })();
 </script>
