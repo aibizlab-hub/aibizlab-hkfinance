@@ -1,0 +1,28 @@
+name: TG KB Bot
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'      # every 15 min (free tier)
+  workflow_dispatch:           # manual trigger for testing
+
+permissions:
+  contents: read
+  actions: write               # needed to persist TG_OFFSET variable
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run Telegram KB bot
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_OFFSET: ${{ vars.TG_OFFSET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tg_bot/bot.py
