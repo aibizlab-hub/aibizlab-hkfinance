@@ -3,6 +3,11 @@ name: TG KB Bot
 on:
   schedule:
     - cron: '*/15 * * * *'      # every 15 min (free tier)
+  push:
+    branches: [master]
+    paths:
+      - 'tg_bot/**'
+      - '.github/workflows/**'
   workflow_dispatch:           # manual trigger for testing
 
 permissions:
