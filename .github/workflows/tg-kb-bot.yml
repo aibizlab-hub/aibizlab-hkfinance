@@ -12,7 +12,6 @@ on:
 
 permissions:
   contents: read
-  actions: write               # needed to persist TG_OFFSET variable
 
 jobs:
   run:
@@ -28,6 +27,4 @@ jobs:
       - name: Run Telegram KB bot
         env:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_OFFSET: ${{ vars.TG_OFFSET }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python tg_bot/bot.py
