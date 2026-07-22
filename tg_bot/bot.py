@@ -2,7 +2,7 @@
 # Manulife KB Telegram bot — PC-independent, runs on GitHub Actions (free).
 # Pure stdlib. No external deps, no paid LLM. Answers by lexical search over
 # the public kb_all.json and returns the relevant doc text + PDF link.
-import re, json, sys, os, urllib.request, urllib.error, urllib.parse
+import re, json, sys, os, time, urllib.request, urllib.error, urllib.parse
 
 KB_BASE = "https://aibizlab-hub.github.io/aibizlab-hkfinance/manulife-kb/kb_all"
 ALLOWED_CHAT = "828131815"   # user's private chat with @My_babyG_bot
@@ -100,10 +100,20 @@ def best_passage(text, qtoks, window=420):
     start = max(0, anchor - window // 3)
     return (text or "")[start:start + window]
 
-def http_get_json(url, timeout=HTTP_TIMEOUT):
-    req = urllib.request.Request(url, headers={"User-Agent": "manulife-kb-bot"})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read().decode("utf-8"))
+def http_get_json(url, timeout=HTTP_TIMEOUT, retries=3):
+    """Fetch + parse JSON with bounded retries (circuit-breaker safe: every
+    external call has a timeout + retry cap, no open-ended loops)."""
+    last = None
+    for attempt in range(retries):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "manulife-kb-bot"})
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception as e:
+            last = e
+            log(f"http_get_json attempt {attempt+1}/{retries} failed: {e}")
+            time.sleep(1.5 * (attempt + 1))
+    raise last
 
 def load_kb():
     """Load the KB. The full KB is split into kb_all0.json..N.json (+manifest)
@@ -196,13 +206,8 @@ def main():
     max_id = max(u["update_id"] for u in updates)
     new_offset = max_id + 1
 
-    # First-run init guard: if we started at 0 (no stored offset), skip answering
-    # stale messages and just advance the offset.
-    if offset == 0:
-        log(f"first run: initializing offset to {new_offset}, not answering {len(updates)} stale msg(s)")
-        print(new_offset)
-        set_github_var("TG_OFFSET", new_offset, gh_token)
-        return
+    # (No first-run skip guard: the bot answers from the very first run so the
+    #  user never has to send twice. Offset is maintained via TG_OFFSET variable.)
 
     answered = 0
     for u in updates:
