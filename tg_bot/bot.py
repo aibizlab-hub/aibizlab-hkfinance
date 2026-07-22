@@ -158,33 +158,15 @@ def tg_api(token, method, params=None, timeout=HTTP_TIMEOUT):
         log(f"tg_api {method} HTTP {e.code}: {body[:200]}")
         return None
 
-def set_github_var(name, value, gh_token):
-    if not gh_token:
-        return
-    base = "https://api.github.com/repos/aibizlab-hub/aibizlab-hkfinance/actions/variables"
-    data = json.dumps({"name": name, "value": str(value)}).encode()
-    h = {"Authorization": f"Bearer {gh_token}", "Accept": "application/vnd.github+json",
-         "Content-Type": "application/json"}
-    # Try PATCH (update) first; if 404, POST (create).
-    try:
-        req = urllib.request.Request(f"{base}/{name}", data=data, method="PATCH", headers=h)
-        urllib.request.urlopen(req, timeout=HTTP_TIMEOUT)
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            try:
-                req = urllib.request.Request(base, data=data, method="POST", headers=h)
-                urllib.request.urlopen(req, timeout=HTTP_TIMEOUT)
-            except Exception as ex:
-                log(f"warn: could not create var {name}: {ex}")
-        else:
-            log(f"warn: could not update var {name}: {e.code}")
-
 def main():
     token = os.environ.get("TG_BOT_TOKEN")
     if not token:
         log("ERROR: TG_BOT_TOKEN not set"); sys.exit(1)
-    gh_token = os.environ.get("GITHUB_TOKEN")
-    offset = int(os.environ.get("TG_OFFSET", "0") or "0")
+    # We do NOT rely on GitHub repo variables (GITHUB_TOKEN cannot write them ->
+    # 403). Instead Telegram itself tracks confirmed updates: every run pulls
+    # unconfirmed messages (offset=0) and at the end confirms them via a
+    # getUpdates?offset=max_id+1 call, so the next run won't re-answer.
+    offset = 0
     log(f"start offset={offset}")
 
     # 1) Load KB (public, CORS *). Fail -> circuit break, don't crash.
@@ -253,9 +235,11 @@ def main():
             log("hit MAX_MSG cap, stopping")
             break
 
-    log(f"answered {answered} message(s); new offset {new_offset}")
-    print(new_offset)
-    set_github_var("TG_OFFSET", new_offset, gh_token)
+    log(f"answered {answered} message(s); confirming up to update_id {new_offset-1}")
+    # Confirm (remove) processed updates via Telegram itself so the next
+    # scheduled run won't re-answer them. Avoids external state / 403 on vars.
+    if updates:
+        tg_api(token, "getUpdates", {"offset": new_offset, "limit": 1, "timeout": 1})
 
 if __name__ == "__main__":
     main()
