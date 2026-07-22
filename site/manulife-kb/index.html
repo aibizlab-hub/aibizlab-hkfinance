@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>宏利保險知識庫 Manulife KB</title>
+<style>
+:root{--bg:#0f1117;--card:#1a1d27;--fg:#e8eaf0;--muted:#9aa3b2;--accent:#ff5e5b;--link:#6ea8fe}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--fg);line-height:1.6}
+header{padding:22px 18px 10px;text-align:center;border-bottom:1px solid #2c3040}
+header h1{margin:0;font-size:22px}
+header p{margin:4px 0 0;color:var(--muted);font-size:13px}
+.wrap{max-width:860px;margin:0 auto;padding:18px 14px}
+#q{width:100%;padding:13px 16px;border-radius:10px;border:1px solid #2c3040;background:#0b0d13;color:var(--fg);font-size:16px}
+.meta{color:var(--muted);font-size:13px;margin:12px 2px}
+.r{background:var(--card);border:1px solid #2c3040;border-radius:12px;padding:14px 16px;margin-bottom:12px}
+.r h3{margin:0 0 3px;font-size:16px}
+.r .f{color:var(--link);font-size:12px;word-break:break-all}
+.r .s{color:#d6dae3;font-size:13px;margin-top:5px}
+.hl{background:#3a2d12;color:#ffd479;border-radius:3px;padding:0 2px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:22px 14px;border-top:1px solid #2c3040}
+</style></head>
+<body><header><h1>🏦 宏利保險知識庫 Manulife KB</h1>
+<p>產品小冊 · 條款 · 表格 · 醫院網絡 · 理賠手續（公開產品文件，無個人資料）</p></header>
+<div class="wrap">
+<input id="q" placeholder="用自然語言查，例如：小朋友 VHIS 改保單持有人 / 入院 去邊間醫院 理賠手續" autofocus>
+<div class="meta" id="meta">載入中…</div>
+<div id="results"></div>
+</div>
+<footer>Manulife KB · 永久網址：aibizlab-hub.github.io/aibizlab-hkfinance/manulife-kb · 公開產品文件，無個人資料</footer>
+<script src="kb_data0.js"></script>
+<script src="kb_data1.js"></script>
+<script src="kb_data2.js"></script>
+<script src="kb_data3.js"></script>
+<script src="kb_data4.js"></script>
+<script src="kb_data5.js"></script>
+<script>
+(function(){
+  var DOCS=window.__KB||[];
+  var IDX={};
+  function tok(s){s=(s||"").toLowerCase();return s.split(/[^a-z0-9一-鿿]+/).filter(Boolean);}
+  DOCS.forEach(function(d,id){d._t=tok(d.t+" "+(d.s||""));d._tl=(d.t||"").toLowerCase();d._fl=(d.f||"").toLowerCase();d._t.forEach(function(w){(IDX[w]=IDX[w]||[]).push(id);});});
+  var qEl=document.getElementById('q'),resEl=document.getElementById('results'),metaEl=document.getElementById('meta');
+  metaEl.textContent=DOCS.length+" 份文件已載入 · 輸入關鍵字即時搜尋";
+  function esc(s){return (s||"").replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});}
+  function hl(s,q){s=esc(s);(q||"").toLowerCase().split(/[^a-z0-9一-鿿]+/).filter(Boolean).forEach(function(w){if(!w)return;var re=new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');s=s.replace(re,function(m){return '<span class=hl>'+m+'</span>';});});return s;}
+  function search(q){var qt=tok(q),score={};qt.forEach(function(w){(IDX[w]||[]).forEach(function(id){score[id]=(score[id]||0)+1;});});var ql=q.toLowerCase();Object.keys(score).forEach(function(k){var id=+k,d=DOCS[id];if(d._tl.indexOf(ql)>=0)score[id]+=8;if(d._fl.indexOf(ql)>=0)score[id]+=5;});return Object.keys(score).map(Number).sort(function(a,b){return score[b]-score[a];}).slice(0,12);}
+  function render(q){if(!q.trim()){metaEl.textContent=DOCS.length+" 份文件已載入 · 輸入關鍵字即時搜尋";resEl.innerHTML="";return;}var hits=search(q);metaEl.textContent=hits.length?("搵到 "+hits.length+" 個相關結果"):"冇搵到，試下其他字眼";resEl.innerHTML=hits.map(function(id){var d=DOCS[id];return '<div class="r"><h3>'+esc(d.t)+'</h3><div class="f">'+esc(d.f)+'</div><div class="s">'+hl(d.s||"",q)+'</div></div>';}).join("");}
+  qEl.addEventListener('input',function(){render(qEl.value);});render("");
+})();
+</script>
+</body></html>
