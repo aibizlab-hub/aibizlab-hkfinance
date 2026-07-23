@@ -4,6 +4,10 @@
 # the public kb_all.json and returns the relevant doc text + PDF link.
 import re, json, sys, os, time, urllib.request, urllib.error, urllib.parse
 
+# Verifier（反駁專家 / 對抗式驗證者）— 同目錄自包含模組，確保無論 CWD 喺邊都 import 到。
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import verifier
+
 KB_BASE = "https://aibizlab-hub.github.io/aibizlab-hkfinance/manulife-kb/kb_all"
 ALLOWED_CHAT = "828131815"   # user's private chat with @My_babyG_bot
 MAX_MSG = 10                  # circuit breaker: never process >10 msgs/run
@@ -206,11 +210,18 @@ def main():
         qt = expand(tok(q))
         ranked = []
         for d in docs:
+            if not isinstance(d, dict):
+                continue
             sc = score_doc(d, qt)
             if sc > 0:
                 ranked.append((sc, d))
         ranked.sort(key=lambda x: x[0], reverse=True)
         top = ranked[:6]
+
+        # === Verifier（反駁專家 / 對抗式驗證者）===
+        # 先用家觀點／假設有冇錯，錯就 KB 撈證據反駁；永遠附 source + 準確免責。
+        rules = verifier.load_rules()
+        rebuttals = verifier.check_rebuttals(q, docs, rules)
 
         lines = ["🔎 搵到以下相關資料（嚟自宏利公開文件）：", ""]
         total = 0
@@ -226,6 +237,10 @@ def main():
             answer = "搵唔到相關文件，試下其他字眼（例如：內地醫院理賠 / 危疾定義 / 住院現金 / 索償表格）。"
         else:
             answer = "\n".join(lines)
+        # === Verifier：前置反駁（如有）+ 永遠附準確免責聲明 ===
+        if rebuttals:
+            answer = "\n\n".join(rebuttals) + "\n\n" + answer
+        answer += verifier.build_disclaimer()
         r = tg_api(token, "sendMessage", {"chat_id": chat_id, "text": answer})
         if r and r.get("ok"):
             answered += 1
