@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>宏利保費率表查價器</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --panel2:#1c2230; --line:#2b3340;
+    --txt:#e6edf3; --mut:#9aa7b4; --acc:#7c5cff; --acc2:#39d0d8;
+    --ok:#3fb950; --warn:#e3b341;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang HK","Microsoft JhengHei",sans-serif;}
+  .wrap{max-width:920px;margin:0 auto;padding:16px;}
+  header{display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+  header .dot{width:12px;height:12px;border-radius:50%;background:var(--acc);box-shadow:0 0 12px var(--acc);}
+  h1{font-size:20px;margin:0;font-weight:700;letter-spacing:.5px;}
+  .sub{color:var(--mut);font-size:13px;margin:2px 0 14px;}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;}
+  @media(max-width:560px){.grid{grid-template-columns:1fr}}
+  label{display:block;font-size:12px;color:var(--mut);margin-bottom:4px;font-weight:600;}
+  select,input{width:100%;background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+    border-radius:10px;padding:10px 11px;font-size:15px;outline:none;}
+  select:focus,input:focus{border-color:var(--acc);}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  button{background:var(--acc);color:#fff;border:none;border-radius:10px;padding:11px 16px;
+    font-size:15px;font-weight:700;cursor:pointer;}
+  button.ghost{background:transparent;border:1px solid var(--line);color:var(--txt);font-weight:600;}
+  button:active{transform:translateY(1px);}
+  .count{font-size:14px;color:var(--mut);margin:4px 0 8px;}
+  .count b{color:var(--acc2);font-size:16px;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);white-space:nowrap;}
+  th{color:var(--mut);font-weight:600;font-size:12px;position:sticky;top:0;background:var(--panel);}
+  td.r,th.r{text-align:right;}
+  tbody tr:nth-child(even){background:rgba(255,255,255,.02);}
+  .q{color:var(--warn);}
+  .note{font-size:12px;color:var(--mut);line-height:1.6;margin-top:6px;}
+  .note code{background:var(--panel2);padding:1px 5px;border-radius:5px;color:var(--acc2);}
+  #progress{height:6px;background:var(--panel2);border-radius:6px;overflow:hidden;margin:10px 0;display:none;}
+  #progress>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .2s;}
+  #status{font-size:13px;color:var(--mut);}
+  .err{color:#ff6b6b;}
+  .pill{display:inline-block;background:var(--panel2);border:1px solid var(--line);border-radius:999px;
+    padding:2px 9px;font-size:12px;color:var(--mut);margin-left:6px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><span class="dot"></span><h1>宏利保費率表查價器</h1></header>
+  <div class="sub">Manulife 全計劃保費 — 按 計劃 / 年齡 / 男·女 / 吸煙 / 供款年數 查詢（數據含 167,003 筆）</div>
+
+  <div class="card">
+    <div id="progress"><i></i></div>
+    <div id="status">載入數據中…</div>
+    <div class="grid" id="controls" style="display:none;margin-top:12px;">
+      <div>
+        <label>保險計劃</label>
+        <input id="planSearch" placeholder="輸入關鍵字篩選計劃…" autocomplete="off">
+        <select id="planSel" size="1" style="margin-top:6px;"></select>
+      </div>
+      <div>
+        <label>性別</label>
+        <select id="genderSel"><option value="">全部</option><option value="男">男</option><option value="女">女</option></select>
+      </div>
+      <div>
+        <label>吸煙狀況</label>
+        <select id="smokerSel"><option value="">全部</option><option value="非吸煙">非吸煙</option><option value="吸煙">吸煙</option></select>
+      </div>
+      <div>
+        <label>年齡（留空＝所有年齡）</label>
+        <input id="ageInput" type="number" inputmode="numeric" placeholder="例如 40" min="0" max="120">
+      </div>
+      <div>
+        <label>供款年數</label>
+        <select id="termSel"><option value="">全部</option></select>
+      </div>
+      <div>
+        <label>貨幣</label>
+        <select id="curSel"><option value="">全部</option><option value="HKD">HKD</option><option value="USD">USD</option></select>
+      </div>
+      <div>
+        <label>保障級別 (Band)</label>
+        <select id="bandSel"><option value="">全部</option></select>
+      </div>
+    </div>
+    <div class="actions" id="actions" style="display:none;">
+      <button id="searchBtn">🔍 查詢</button>
+      <button id="resetBtn" class="ghost">重置</button>
+      <button id="exportBtn" class="ghost">⬇ 匯出 CSV</button>
+    </div>
+  </div>
+
+  <div class="card" id="resultCard" style="display:none;">
+    <div class="count" id="count"></div>
+    <div style="max-height:60vh;overflow:auto;">
+      <table>
+        <thead><tr>
+          <th>計劃</th><th class="r">年齡</th><th>性別</th><th>吸煙</th>
+          <th>供款年數</th><th>貨幣</th><th>Band</th><th class="r">保費</th>
+        </tr></thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="note">
+      <b>讀法：</b> <code>?</code> 表示該計劃的來源率表本身<b>沒有</b>按此維度分層 —— 例如醫療／VHIS／年金多為
+      <b>不分男女、無吸煙分級、年繳單一级別</b>，故此維度顯示 <code>?</code> 屬正常（非抽取錯誤）。
+      凡來源有列明「Premium Payment Period」的計劃，供款年數均已正確擷取。
+    </div>
+  </div>
+</div>
+
+<script>
+const FI = {plan:0, age:1, gender:2, smoker:3, term:4, cur:5, band:6, prem:7};
+let MANIFEST=null, PLANS=[], ROWS=[];
+const $ = id => document.getElementById(id);
+
+async function load(){
+  try{
+    const m = await fetch('./manifest.json', {cache:'no-cache'});
+    if(!m.ok) throw new Error('manifest '+m.status);
+    MANIFEST = await m.json();
+    PLANS = MANIFEST.plans;
+    const chunks = MANIFEST.chunks, n = chunks.length;
+    $('progress').style.display='block';
+    for(let i=0;i<n;i++){
+      const arr = await (await fetch('./'+chunks[i], {cache:'no-cache'})).json();
+      ROWS.push(...arr);
+      $('progress').firstElementChild.style.width = Math.round((i+1)/n*100)+'%';
+      $('status').textContent = `載入數據中… ${i+1}/${n} (${(ROWS.length).toLocaleString()} 筆)`;
+    }
+    buildPlans();
+    $('controls').style.display='grid';
+    $('actions').style.display='flex';
+    $('progress').style.display='none';
+    $('status').textContent = `✅ 數據就緒：${ROWS.length.toLocaleString()} 筆 / ${PLANS.length} 個計劃`;
+    applyFilter();
+  }catch(e){
+    $('status').innerHTML = '<span class="err">載入失敗：'+e.message+
+      '。請確認本頁經由網頁伺服器（GitHub Pages）開啟，而非直接雙擊離線檔案。</span>';
+  }
+}
+
+function buildPlans(){
+  const sel = $('planSel');
+  PLANS.forEach((p,i)=>{ const o=document.createElement('option'); o.value=p; o.textContent=p; sel.appendChild(o); });
+  sel.selectedIndex = 0;
+  // plan search live filter
+  $('planSearch').addEventListener('input', e=>{
+    const q = e.target.value.trim().toLowerCase();
+    [...sel.options].forEach(o=>{ o.style.display = (!q || o.value.toLowerCase().includes(q)) ? '' : 'none'; });
+  });
+  sel.addEventListener('change', refreshPlanDims);
+  refreshPlanDims();
+}
+
+// populate term/band selects from the selected plan's distinct values
+function refreshPlanDims(){
+  const pIdx = PLANS.indexOf($('planSel').value);
+  const terms=new Set(), bands=new Set();
+  for(const r of ROWS){ if(r[FI.plan]===pIdx){ terms.add(r[FI.term]); bands.add(r[FI.band]); } }
+  fillSelect($('termSel'), sortTerms([...terms]));
+  fillSelect($('bandSel'), sortBands([...bands]));
+}
+function fillSelect(sel, vals){
+  const cur=sel.value;
+  sel.innerHTML='<option value="">全部</option>';
+  vals.forEach(v=>{ const o=document.createElement('option'); o.value=v; o.textContent=(v==='?'?'? (不適用)':v); sel.appendChild(o); });
+  if(vals.includes(cur)) sel.value=cur;
+}
+function sortTerms(a){ const order=t=>{ if(t==='?')return 99; if(t==='Single Premium')return 0; const m=t.match(/(\d+)/); return m?+m[1]:50; }; return a.sort((x,y)=>order(x)-order(y)); }
+function sortBands(a){ return a.sort((x,y)=>{ const nx=x==='?'?99:+x, ny=y==='?'?99:+y; return nx-ny; }); }
+
+function applyFilter(){
+  const pIdx = PLANS.indexOf($('planSel').value);
+  const g=$('genderSel').value, s=$('smokerSel').value, age=$('ageInput').value.trim();
+  const term=$('termSel').value, cur=$('curSel').value, band=$('bandSel').value;
+  const out=[];
+  for(const r of ROWS){
+    if(r[FI.plan]!==pIdx) continue;
+    if(g && r[FI.gender]!==g) continue;
+    if(s && r[FI.smoker]!==s) continue;
+    if(age!=='' && String(r[FI.age])!==age) continue;
+    if(term && r[FI.term]!==term) continue;
+    if(cur && r[FI.cur]!==cur) continue;
+    if(band && r[FI.band]!==band) continue;
+    out.push(r);
+  }
+  render(out);
+}
+
+function render(rows){
+  const tb=$('tbody'); tb.innerHTML='';
+  const planName = $('planSel').value;
+  const max = 2000; // cap render for browser smoothness
+  const shown = rows.slice(0, max);
+  for(const r of shown){
+    const tr=document.createElement('tr');
+    const cells=[
+      esc(planName), r[FI.age], q(r[FI.gender]), q(r[FI.smoker]),
+      q(r[FI.term]), r[FI.cur], q(r[FI.band]), r[FI.prem]
+    ];
+    cells.forEach((c,i)=>{ const td=document.createElement('td'); if(i===0||i===7) td.className='r'; td.innerHTML=c; tr.appendChild(td); });
+    tb.appendChild(tr);
+  }
+  $('resultCard').style.display='block';
+  const c=$('count');
+  c.innerHTML = `符合條件：<b>${rows.length.toLocaleString()}</b> 筆` +
+    (rows.length>max?` <span class="pill">只顯示首 ${max} 筆，匯出 CSV 可取全部</span>`:'');
+  window.__lastRows = rows; window.__planName = planName;
+}
+function esc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+function q(v){ return v==='?' ? '<span class="q">?</span>' : esc(v); }
+
+function exportCSV(){
+  const rows = window.__lastRows||[];
+  if(!rows.length){ alert('沒有可匯出的資料，請先查詢。'); return; }
+  const head=['計劃','年齡','性別','吸煙','供款年數','貨幣','Band','保費'];
+  const lines=[head.join(',')];
+  for(const r of rows){
+    lines.push([window.__planName, r[FI.age], r[FI.gender], r[FI.smoker], r[FI.term], r[FI.cur], r[FI.band], r[FI.prem]].join(','));
+  }
+  const blob=new Blob(['\uFEFF'+lines.join('\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='manulife_ratecard_'+Date.now()+'.csv'; a.click();
+  URL.revokeObjectURL(a.href);
+}
+
+$('searchBtn').addEventListener('click', applyFilter);
+$('ageInput').addEventListener('keydown', e=>{ if(e.key==='Enter') applyFilter(); });
+$('resetBtn').addEventListener('click', ()=>{
+  $('genderSel').value=''; $('smokerSel').value=''; $('ageInput').value='';
+  $('curSel').value=''; refreshPlanDims(); $('termSel').value=''; $('bandSel').value=''; applyFilter();
+});
+$('exportBtn').addEventListener('click', exportCSV);
+
+load();
+</script>
+</body>
+</html>
