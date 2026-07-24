@@ -51,7 +51,7 @@
 <body>
 <div class="wrap">
   <header><span class="dot"></span><h1>宏利保費率表查價器</h1></header>
-  <div class="sub">Manulife 全計劃保費 — 按 計劃 / 年齡 / 男·女 / 吸煙 / 供款年數 查詢（數據含 167,003 筆）</div>
+  <div class="sub">Manulife 全計劃保費 — 按 計劃 / 年齡 / 男·女 / 吸煙 / 供款年數 查詢（覆蓋 40 個計劃 · 來源率表附於「來源」欄）</div>
 
   <div class="card">
     <div id="progress"><i></i></div>
@@ -100,7 +100,7 @@
       <table>
         <thead><tr>
           <th>計劃</th><th class="r">年齡</th><th>性別</th><th>吸煙</th>
-          <th>供款年數</th><th>貨幣</th><th>Band</th><th class="r">保費</th>
+          <th>供款年數</th><th>貨幣</th><th>Band</th><th class="r">保費</th><th>來源</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
       </table>
@@ -114,7 +114,7 @@
 </div>
 
 <script>
-const FI = {plan:0, age:1, gender:2, smoker:3, term:4, cur:5, band:6, prem:7};
+const FI = {plan:0, age:1, gender:2, smoker:3, term:4, cur:5, band:6, prem:7, pdf:8};
 let MANIFEST=null, PLANS=[], ROWS=[];
 const $ = id => document.getElementById(id);
 
@@ -197,18 +197,25 @@ function render(rows){
   const planName = $('planSel').value;
   const max = 2000; // cap render for browser smoothness
   const shown = rows.slice(0, max);
+  // detect rows that share the same lookup key but differ by source/premium
+  const keyOf = r => [r[FI.age],r[FI.gender],r[FI.smoker],r[FI.term],r[FI.cur],r[FI.band]].join('|');
+  const kc={}; for(const r of shown){ const k=keyOf(r); kc[k]=(kc[k]||0)+1; }
+  let dupGroups=0; for(const k in kc){ if(kc[k]>1) dupGroups++; }
   for(const r of shown){
     const tr=document.createElement('tr');
+    if(kc[keyOf(r)]>1) tr.style.outline='1px solid var(--warn)';
+    const src = r[FI.pdf] ? esc(r[FI.pdf]) : '';
     const cells=[
       esc(planName), r[FI.age], q(r[FI.gender]), q(r[FI.smoker]),
-      q(r[FI.term]), r[FI.cur], q(r[FI.band]), r[FI.prem]
+      q(r[FI.term]), r[FI.cur], q(r[FI.band]), r[FI.prem], src
     ];
-    cells.forEach((c,i)=>{ const td=document.createElement('td'); if(i===0||i===7) td.className='r'; td.innerHTML=c; tr.appendChild(td); });
+    cells.forEach((c,i)=>{ const td=document.createElement('td'); if(i===0||i===7) td.className='r'; if(i===8) td.style.color='var(--mut)'; td.innerHTML=c; tr.appendChild(td); });
     tb.appendChild(tr);
   }
   $('resultCard').style.display='block';
   const c=$('count');
   c.innerHTML = `符合條件：<b>${rows.length.toLocaleString()}</b> 筆` +
+    (dupGroups?` <span class="pill" style="color:var(--warn);border-color:var(--warn)">⚠️ ${dupGroups} 組有多個來源，請向公司確認最新率表</span>`:'') +
     (rows.length>max?` <span class="pill">只顯示首 ${max} 筆，匯出 CSV 可取全部</span>`:'');
   window.__lastRows = rows; window.__planName = planName;
 }
@@ -218,10 +225,10 @@ function q(v){ return v==='?' ? '<span class="q">?</span>' : esc(v); }
 function exportCSV(){
   const rows = window.__lastRows||[];
   if(!rows.length){ alert('沒有可匯出的資料，請先查詢。'); return; }
-  const head=['計劃','年齡','性別','吸煙','供款年數','貨幣','Band','保費'];
+  const head=['計劃','年齡','性別','吸煙','供款年數','貨幣','Band','保費','來源'];
   const lines=[head.join(',')];
   for(const r of rows){
-    lines.push([window.__planName, r[FI.age], r[FI.gender], r[FI.smoker], r[FI.term], r[FI.cur], r[FI.band], r[FI.prem]].join(','));
+    lines.push([window.__planName, r[FI.age], r[FI.gender], r[FI.smoker], r[FI.term], r[FI.cur], r[FI.band], r[FI.prem], r[FI.pdf]].join(','));
   }
   const blob=new Blob(['\uFEFF'+lines.join('\n')],{type:'text/csv;charset=utf-8'});
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
