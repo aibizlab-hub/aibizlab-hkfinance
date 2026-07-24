@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>宏利計劃投保資格 / 組合指引（內部參考）</title>
+<style>
+  :root{--bg:#f7f8fa;--card:#fff;--ink:#1c2330;--mut:#66708a;--line:#e3e7ef;--accent:#1959c6;--warn:#b54708;--ok:#1a7f50;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,"PingFang HK","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;padding:18px;}
+  .wrap{max-width:1080px;margin:0 auto;}
+  h1{font-size:22px;margin:0 0 4px}
+  .sub{color:var(--mut);font-size:13px;margin-bottom:14px}
+  .disc{background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;padding:12px 14px;border-radius:10px;font-size:13.5px;margin-bottom:18px}
+  .disc b{color:#7c2d12}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:16px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+  .box h2{font-size:16px;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+  input#q{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:9px;font-size:15px;margin-bottom:12px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:#eef2f8;color:#33415c;font-weight:600;position:sticky;top:0}
+  tr.rider td.plan{color:#8a5a00}
+  td.age{white-space:nowrap;font-variant-numeric:tabular-nums}
+  td.note{color:var(--mut);font-size:12.5px}
+  .pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:600}
+  .pill.ok{background:#e7f6ee;color:var(--ok)} .pill.warn{background:#fef3c7;color:var(--warn)}
+  .tag{font-size:11px;color:#8a5a00;background:#fef3c7;padding:1px 7px;border-radius:6px;margin-left:6px}
+  ul{margin:6px 0 0;padding-left:18px} li{margin:3px 0;font-size:13.5px}
+  .muted{color:var(--mut);font-size:12.5px}
+  .src{font-size:12px;color:var(--mut);margin-top:10px}
+  code{background:#eef2f8;padding:1px 5px;border-radius:5px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>宏利計劃 · 投保資格 / 組合指引</h1>
+  <div class="sub">內部參考工具 · 生成日期 2026-07-24 · 涵蓋 43 個計劃</div>
+
+  <div class="disc">
+    <b>⚠️ 重要免責：</b>本頁係<b>內部參考</b>，由產品小冊子 + 自動提取嘅保費表推算，<b>並非 Manulife 官方核保決定</b>。
+    正式投保資格、可保年齡、計劃組合限制，<b>一律以 Manulife 最新計劃文件及核保部指引為準</b>。
+    報價前請再次核對官方 illustration / agent 系統。
+  </div>
+
+  <div class="box">
+    <h2>🔎 搜尋計劃</h2>
+    <input id="q" placeholder="打計劃名 / 代碼，例如 MVC、WIOP3、危疾…" oninput="filter()">
+    <table id="tbl">
+      <thead><tr><th>計劃</th><th>類型</th><th>保費表涵蓋年齡</th><th>費率 app</th><th>備註（來源）</th></tr></thead>
+      <tbody>
+  <tr class="">
+    <td class="plan">「萬無一失」個人意外保障計劃2_(TCP2)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">1–3 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">「萬無一失」個人意外附加保障2_(TCB2)_</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">1–3 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">癌症治療附加保障_(CTB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">0–99 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">保寶安心兒童附加保障_(CCB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">（無保費數據）</td>
+    <td>⚠️ 未納入費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">保費支付人利益附加保障_(PB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">21–45 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">倍康醫療加保計劃_(ManuEnrich)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">11–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">赤霞珠終身壽險計劃2_(LV2)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–70 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">宏伴護航危疾入息保障_(IS)_</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">宏健守護危疾入息保障_(IG)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">宏利愛守護自願醫保標準計劃_(VHIS_Shelter)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">6–81 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">宏利晉逸自願醫保附加保障_(VHIS_Supreme_Lite)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">11–64 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">宏利晉悅自願醫保靈活計劃_(VHIS_Supreme)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">12–81 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">宏利全護航自願醫保靈活計劃_(VHIS_First)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">6–61 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">活亮人生醫療保障系列_(MS)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–70 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">活亮人生醫療附加保障_(MS)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">0–70 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">活耀人生危疾保_2_(加強版)_(MBC2_Plus)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">活耀人生危疾保_2_(MBC2)_</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">活耀人生危疾保PRO_(MBC_PRO)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">晉領醫療保障系列_(MM)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–70 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">晉領醫療附加保障_(MM)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">0–70 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">精選定期壽險_(ManuTerm)_(ManuTerm)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">16–74 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">精選定期壽險附加保障_(ManuTerm_Benefit)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">16–74 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">靈活自在年金計劃_(ManuDelight)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">18–60 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">門診附加保障_(OB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">0–66 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">傷殘豁免保費附加保障_(PWB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">15–64 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">傷殘入息保障計劃_(DI)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">26–59 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">世紀傳承保障計劃_(MCY)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–75 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">守護安心癌症附加保障_(CGPB)_</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">18–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">守護無間危疾保___守護無間危疾保（保寶未來）(MPC)___(MPC_(BestStart))</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">守護一生醫療保障計劃_(MG)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–119 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">守護一生醫療附加保障_(MG)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">0–119 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">歲稅樂享延期年金_(ManuLeisure)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">18–109 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">現金扶危附加保障_(CAB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">0–60 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">相伴無憂個人意外保險計劃_(TCA)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">（無保費數據）</td>
+    <td>⚠️ 未納入費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">心愛一家保_(MLC)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">意外死亡附加保障_(ADB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">（無保費數據）</td>
+    <td>⚠️ 未納入費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">盈傳創富保障計劃_3_-_優選版_(WIOP3E)_(WIOP3E)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–75 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">保費按受保人投保年齡、性別、風險類別及居住國家編碼決定。</td>
+  </tr>
+  <tr class="">
+    <td class="plan">盈傳創富保障計劃_3_(WIOP3)_(WIOP3)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–75 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">保費按受保人投保年齡、性別、風險類別及居住國家編碼決定。</td>
+  </tr>
+  <tr class="">
+    <td class="plan">悠然危疾保_(MVC)_</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">優越終身保_(MPP)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–75 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="rider">
+    <td class="plan">摯無憂危疾附加保障(基本版_加強版)_(CCIB)</td>
+    <td>附加保障（須附加主險）</td>
+    <td class="age">0–65 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">住院現金保障_(HI)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–112 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr>
+  <tr class="">
+    <td class="plan">卓越終身保_(MEP)</td>
+    <td>主險 / 獨立計劃</td>
+    <td class="age">0–75 歲</td>
+    <td>✅ app 有費率</td>
+    <td class="note">—</td>
+  </tr></tbody>
+    </table>
+    <div class="muted" style="margin-top:8px">「保費表涵蓋年齡」＝本 app 保費表中有數據嘅年齡範圍，<b>一般等於投保年齡</b>；但年金／終身壽險等部分計劃嘅最高年齡可能與官方投保年齡不同，請以官方文件為準。</div>
+  </div>
+
+  <div class="box">
+    <h2>📋 官方投保年齡（來自小冊子，有明確寫明嘅）</h2>
+    <ul>
+      <li><b>傲宏保障投資相連計劃 (APLP)</b>：投保年齡 <b>5–50 歲</b>（含首尾）。<span class="muted">— 小冊子明文</span></li>
+      <li><b>宏浚傳承保障計劃 (FA)</b>：保單轉換時新受保人 <b>60 歲或以下</b>；或不大於現受保人年齡且在 <b>80 歲或以下</b>。</li>
+      <li><b>盈傳創富保障計劃 3 (WIOP3 / WIOP3E)</b>：保費按受保人<b>投保年齡、性別、風險類別及居住國家</b>編碼決定。</li>
+      <li><b>財摯家傳保障計劃 (PP)</b>：槓桿比例視<b>投保年齡</b>而定（最高 180%）。</li>
+    </ul>
+    <div class="muted">其餘計劃小冊子未列明具體投保年齡上限，請參考上表「保費表涵蓋年齡」並以官方文件核實。</div>
+  </div>
+
+  <div class="box">
+    <h2>🔗 附加保障（rider）— 必須附加於主險</h2>
+    <div class="muted">以下 15 個計劃係<b>附加保障</b>，唔可以獨立投保，必須附加喺一張合資格嘅主險／獨立計劃上：</div>
+    <ul><li>「萬無一失」個人意外附加保障2_(TCB2)_</li><li>癌症治療附加保障_(CTB)</li><li>保寶安心兒童附加保障_(CCB)</li><li>保費支付人利益附加保障_(PB)</li><li>宏利晉逸自願醫保附加保障_(VHIS_Supreme_Lite)</li><li>活亮人生醫療附加保障_(MS)</li><li>晉領醫療附加保障_(MM)</li><li>精選定期壽險附加保障_(ManuTerm_Benefit)</li><li>門診附加保障_(OB)</li><li>傷殘豁免保費附加保障_(PWB)</li><li>守護安心癌症附加保障_(CGPB)_</li><li>守護一生醫療附加保障_(MG)</li><li>現金扶危附加保障_(CAB)</li><li>意外死亡附加保障_(ADB)</li><li>摯無憂危疾附加保障(基本版_加強版)_(CCIB)</li></ul>
+  </div>
+
+  <div class="box">
+    <h2>🚫 計劃組合 / 投保限制 — 需以官方核保指引確認</h2>
+    <div class="disc" style="margin-bottom:10px">
+      <b>老實講：</b>我翻查過手頭所有產品小冊子（62 份），<b>冇找到可靠記載「邊啲計劃唔可以擺埋一齊」嘅明文規則</b>。
+      小冊子入面嘅「組合」二字多數係「投資組合」，唔係 plan 組合限制。所以呢一欄<b>我唔會估</b>——錯咗係 compliance 風險。
+    </div>
+    <p class="muted">你可能本身知某啲組合唔得（你之前都提過）。請喺下面位填寫你確認過嘅限制，俾自己同同事參考：</p>
+    <table>
+      <thead><tr><th>組合 / 情況</th><th>限制（你填）</th><th>來源 / 確認日期</th></tr></thead>
+      <tbody>
+        <tr><td>例：危疾 + 醫療附加</td><td><i>（待填：通常可疊加，以核保為準）</i></td><td></td></tr>
+        <tr><td>例：兩張同類壽險</td><td><i>（待填）</i></td><td></td></tr>
+        <tr><td></td><td><i>（待填）</i></td><td></td></tr>
+        <tr><td></td><td><i>（待填）</i></td><td></td></tr>
+      </tbody>
+    </table>
+    <div class="muted" style="margin-top:8px">確認渠道：Manulife 核保手冊 / 你的 agent 主管 / 計劃文件「不保事項」及「投保規定」一節。</div>
+  </div>
+
+  <div class="box">
+    <h2>📭 暫無保費數據嘅計劃</h2>
+    <ul><li>保寶安心兒童附加保障_(CCB) <span class="tag">未納入費率 app</span></li><li>意外死亡附加保障_(ADB) <span class="tag">未納入費率 app</span></li><li>相伴無憂個人意外保險計劃_(TCA) <span class="tag">未納入費率 app</span></li></ul>
+    <div class="muted">呢啲多數係附加保障或格式特殊嘅意外計劃，rate-card PDF 格式與主險不同，尚未納入自動提取。需要嘅話可另外補。</div>
+  </div>
+
+  <div class="src">
+    資料來源：① 自動提取保費表 <code>all_plans_rates.csv</code>（40 個計劃有年齡數據）；
+    ② 產品小冊子內文 <code>manulife_product_texts/*.txt</code>（62 份）；
+    ③ 提取覆蓋率 <code>_v2_coverage.json</code>。本頁為靜態快照，數據更新後需重新生成。
+  </div>
+</div>
+<script>
+function filter(){
+  const v=document.getElementById('q').value.trim().toLowerCase();
+  document.querySelectorAll('#tbl tbody tr').forEach(tr=>{
+    tr.style.display = tr.textContent.toLowerCase().includes(v) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
