@@ -51,7 +51,7 @@
 <body>
 <div class="wrap">
   <header><span class="dot"></span><h1>宏利保費率表查價器</h1></header>
-  <div class="sub">Manulife 全計劃保費 — 按 計劃 / 年齡 / 男·女 / 吸煙 / 供款年數 查詢（覆蓋 40 個計劃 · 來源率表附於「來源」欄）</div>
+  <div class="sub">Manulife 全計劃保費 — 按 計劃 / 年齡 / 男·女 / 吸煙 / 供款年數 查詢（覆蓋 43 個計劃 · 來源率表附於「來源」欄）</div>
 
   <div class="card">
     <div id="progress"><i></i></div>
@@ -105,6 +105,7 @@
         <tbody id="tbody"></tbody>
       </table>
     </div>
+    <div class="note" id="specialNote" style="display:none;color:var(--warn);"></div>
     <div class="note">
       <b>讀法：</b> <code>?</code> 表示該計劃的來源率表本身<b>沒有</b>按此維度分層 —— 例如醫療／VHIS／年金多為
       <b>不分男女、無吸煙分級、年繳單一级別</b>，故此維度顯示 <code>?</code> 屬正常（非抽取錯誤）。
@@ -172,7 +173,14 @@ function fillSelect(sel, vals){
   if(vals.includes(cur)) sel.value=cur;
 }
 function sortTerms(a){ const order=t=>{ if(t==='?')return 99; if(t==='Single Premium')return 0; const m=t.match(/(\d+)/); return m?+m[1]:50; }; return a.sort((x,y)=>order(x)-order(y)); }
-function sortBands(a){ return a.sort((x,y)=>{ const nx=x==='?'?99:+x, ny=y==='?'?99:+y; return nx-ny; }); }
+function sortBands(a){
+  return a.sort((x,y)=>{
+    if(x==='?' || y==='?') return x==='?' ? 1 : -1;
+    const nx=parseFloat(x), ny=parseFloat(y);
+    if(!isNaN(nx) && !isNaN(ny)) return nx-ny;
+    return String(x).localeCompare(String(y));
+  });
+}
 
 function applyFilter(){
   const pIdx = PLANS.indexOf($('planSel').value);
@@ -218,6 +226,16 @@ function render(rows){
     (dupGroups?` <span class="pill" style="color:var(--warn);border-color:var(--warn)">⚠️ ${dupGroups} 組有多個來源，請向公司確認最新率表</span>`:'') +
     (rows.length>max?` <span class="pill">只顯示首 ${max} 筆，匯出 CSV 可取全部</span>`:'');
   window.__lastRows = rows; window.__planName = planName;
+  const sn = $('specialNote');
+  if(planName.includes('保寶安心兒童附加保障_(CCB)') || planName.includes('意外死亡附加保障_(ADB)')){
+    sn.style.display='block';
+    sn.innerHTML = '<b>⚠️ 此計劃保費為「每 1,000 保額／保障額」之費率。</b> 實際保費 = 顯示費率 × (投保保額 ÷ 1,000)。';
+  }else if(planName.includes('相伴無憂個人意外保險計劃_(TCA)')){
+    sn.style.display='block';
+    sn.innerHTML = '<b>⚠️ 此計劃為「名義金額 × 年齡組別」之固定年繳保費。</b> 請在「保障級別 (Band)」揀選對應組合。';
+  }else{
+    sn.style.display='none';
+  }
 }
 function esc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 function q(v){ return v==='?' ? '<span class="q">?</span>' : esc(v); }
