@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>宏利 MPF 總守則 v2.0（天乙標準）— 開戶填表 SOP + 銷售守則</title>
+<style>
+  :root{--green:#00843d;--green-dark:#005a2a;--gold:#c9a227;--red:#b02a2a;--blue:#1a4f8a;--bg:#f6f7f4;--card:#fff;--ink:#1c2420;--muted:#5c6b61;--line:#dde5de;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:-apple-system,"PingFang HK","Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.68;padding:16px;font-size:15px;}
+  .wrap{max-width:980px;margin:0 auto;}
+  header{background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;border-radius:16px;padding:26px 24px;margin-bottom:16px;}
+  header h1{font-size:25px;letter-spacing:.5px;}
+  header .sub{opacity:.93;margin-top:6px;font-size:13.5px;}
+  .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);border-radius:999px;padding:2px 12px;font-size:12.5px;margin-top:10px;margin-right:6px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.04);}
+  .card h2{font-size:19px;color:var(--green-dark);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+  .card h3{font-size:15.5px;color:var(--green-dark);margin:14px 0 4px;}
+  .card h4{font-size:14px;color:var(--blue);margin:12px 0 2px;}
+  .num{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-size:15px;flex:0 0 auto;}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;margin:8px 0;}
+  th{background:#eef4ef;color:var(--green-dark);text-align:left;padding:7px 9px;border-bottom:2px solid var(--green);}
+  td{padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top;}
+  tr:last-child td{border-bottom:none;}
+  td.f,th.f{font-family:Consolas,"Courier New",monospace;font-size:12.5px;}
+  .money{font-weight:700;color:var(--green-dark);white-space:nowrap;}
+  .note{font-size:13px;color:var(--muted);margin-top:8px;}
+  ul.tight,ol.tight{padding-left:20px;font-size:14.5px;}
+  ul.tight li,ol.tight li{margin:5px 0;}
+  .hl{background:#fdf6d8;padding:0 4px;border-radius:4px;font-weight:600;}
+  code{background:#eef1ee;border:1px solid #d6ded8;border-radius:4px;padding:0 4px;font-family:Consolas,monospace;font-size:12.5px;}
+  pre{background:#1e2a24;color:#d8e8dd;border-radius:8px;padding:12px 14px;overflow-x:auto;font-family:Consolas,monospace;font-size:12.5px;line-height:1.55;margin:8px 0;}
+  pre .c{color:#8fb39c;}
+  .ok{display:inline-block;background:#eaf5ee;border:1px solid #9dc9b0;color:#005a2a;border-radius:6px;padding:1px 8px;font-size:12.5px;white-space:nowrap;}
+  .no{display:inline-block;background:#fdeeee;border:1px solid #efb9b9;color:#b02a2a;border-radius:6px;padding:1px 8px;font-size:12.5px;white-space:nowrap;}
+  .warn{display:inline-block;background:#fff8e6;border:1px solid #e8d48a;color:#7a5c10;border-radius:6px;padding:1px 8px;font-size:12.5px;white-space:nowrap;}
+  .must{display:inline-block;background:#eaf1fa;border:1px solid #a9c4e4;color:#1a4f8a;border-radius:6px;padding:1px 8px;font-size:12.5px;white-space:nowrap;}
+  .alert{background:#fff8e6;border:1px solid #e8d48a;border-left:5px solid var(--gold);border-radius:10px;padding:12px 16px;font-size:14.5px;margin-bottom:16px;}
+  .danger{background:#fdeeee;border:1px solid #f0c9c9;border-left:5px solid var(--red);border-radius:10px;padding:12px 16px;font-size:14.5px;margin-bottom:16px;}
+  .gold-std{background:#f4f9ff;border:1px solid #a9c4e4;border-left:5px solid var(--blue);border-radius:10px;padding:12px 16px;font-size:14.5px;margin-bottom:16px;}
+  footer{font-size:12.5px;color:var(--muted);padding:14px 4px 30px;}
+  footer a{color:var(--green-dark);word-break:break-all;}
+  .toc{columns:2;font-size:14px;padding-left:20px;}
+  @media(max-width:700px){.toc{columns:1;} table{font-size:12.5px;} th,td{padding:5px 6px;} pre{font-size:11.5px;}}
+  @media print{body{background:#fff;padding:0;font-size:11pt;} .card,header{box-shadow:none;break-inside:avoid;} header{background:#005a2a !important;-webkit-print-color-adjust:exact;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>宏利 MPF 總守則 v2.0　<span style="font-size:17px;font-weight:400;">天乙標準</span></h1>
+  <div class="sub">開戶填表 SOP ＋ 銷售守則　·　2026年10月29日核實　·　宏利香港及澳門</div>
+  <span class="badge">天乙 = 唯一黃金標準</span><span class="badge">26 格實心剔座標</span><span class="badge">9 件套</span><span class="badge">五項驗收</span><span class="badge">歷史中伏 Top 15</span>
+</header>
+
+<div class="gold-std">
+  <b>🏆 黃金標準聲明（由 KEN 2026-10-29 確立）</b>
+  <p style="margin-top:6px;"><b>天乙創新 TIANYI 呢一份係基準。</b>由今日起，所有新 CASE 一律<b>參照天乙嘅填寫方法</b>執行，直到 KEN 明確話要改為止。</p>
+  <p style="margin-top:6px;">參照方法唔係「記住結論」，而係<b>照抄天乙嘅工具鏈同資料結構</b>：</p>
+  <ul class="tight" style="margin-top:4px;">
+    <li>腳本源：<code>C:/Users/user/Downloads/TIANYI_CASE/tools/</code>（新 case 成個資料夾複製，改常數）</li>
+    <li>空白表源：<code>C:/Users/user/WorkBuddy/2026-07-17-15-57-49/manulife-kb-restore/ManulifeKB/raw/</code>（<b>唔使再上 manutouch</b>）</li>
+    <li>交付版本：<code>out_ticked/</code>　⚠️ <code>out/</code> 係半成品（冇剔格），<b>絕對唔可以交付</b></li>
+  </ul>
+</div>
+
+<div class="danger">
+  <b>🚨 v2.0 第一件事：修正一個已經發生嘅交付錯誤</b>
+  <p style="margin-top:6px;">2026-10-29 送畀 KEN 嘅 RS 係 <code>out/04_RS_天乙_已填.pdf</code> —— <b>呢份係冇剔格嘅半成品</b>。</p>
+  <table style="margin-top:8px;">
+    <tr><th>檔案</th><th>剔格像素黑度</th><th>狀態</th></tr>
+    <tr><td class="f">out/04_RS_天乙_已填.pdf</td><td>5.3%</td><td><span class="no">冇剔 · 不可交付</span></td></tr>
+    <tr><td class="f">out_ticked/04_RS_天乙_已填.pdf</td><td>87.2%</td><td><span class="ok">已剔 · 正確交付版</span></td></tr>
+  </table>
+  <p style="margin-top:8px;">→ 已重新傳送正確版本。<b>呢條規則已寫入本守則第 13 節（交付前三重驗證）</b>，以後唔會再發生。</p>
+</div>
+
+<div class="alert">
+  <b>📌 目錄：</b>
+  <ol class="toc" style="padding-left:20px;margin-top:6px;">
+    <li><a href="#s0" style="color:#005a2a;">資料可信度分級</a></li>
+    <li><a href="#s1" style="color:#005a2a;">填表鐵則 12 條（最接近 SD 嘅必背）</a></li>
+    <li><a href="#s2" style="color:#005a2a;">天乙 9 件套交付規格</a></li>
+    <li><a href="#s3" style="color:#005a2a;">CASE 資料夾結構（新 case 照開）</a></li>
+    <li><a href="#s4" style="color:#005a2a;">正確執行順序（build_all 順序）</a></li>
+    <li><a href="#s5" style="color:#005a2a;">GS-ERA 26 頁逐頁規格</a></li>
+    <li><a href="#s6" style="color:#005a2a;">GS-DDA 4 頁規格</a></li>
+    <li><a href="#s7" style="color:#005a2a;">GS-REEA 17 頁規格</a></li>
+    <li><a href="#s8" style="color:#005a2a;">RS 2 頁規格</a></li>
+    <li><a href="#s9" style="color:#005a2a;">MPF-IFF 3 頁規格</a></li>
+    <li><a href="#s10" style="color:#005a2a;">自製文件 06／07 規格</a></li>
+    <li><a href="#s11" style="color:#005a2a;">26 格實心剔總表（連座標）</a></li>
+    <li><a href="#s12" style="color:#005a2a;">日期 / 中介人 / 姓名 / 地址 通用規則</a></li>
+    <li><a href="#s13" style="color:#005a2a;">交付前五項驗收 + 三重驗證</a></li>
+    <li><a href="#s14" style="color:#005a2a;">歷史中伏 Top 15（呢啲全部錯過）</a></li>
+    <li><a href="#s15" style="color:#005a2a;">新 CASE 起手式（資料採集清單）</a></li>
+    <li><a href="#s16" style="color:#005a2a;">銷售守則（鐵律／階梯／紅線）</a></li>
+    <li><a href="#s17" style="color:#005a2a;">待核實清單 + 資料來源</a></li>
+  </ol>
+</div>
+
+<!-- ============ 0 ============ -->
+<div class="card" id="s0">
+  <h2><span class="num">0</span> 資料可信度分級 ＋ 裁決次序</h2>
+  <table>
+    <tr><th>標記</th><th>意思</th><th>你可以點用</th></tr>
+    <tr><td><span class="ok">已核實</span></td><td>有宏利官方單張／新聞稿／積金局官網原文支持</td><td>見客直接引用</td></tr>
+    <tr><td><span class="warn">待核實</span></td><td>二手來源或推廣細節未確認，可能變</td><td>只作內部參考，講之前先叫 AI 複查</td></tr>
+    <tr><td><span class="no">已失效</span></td><td>推廣期已過／條款已變</td><td>唔可以再對客講</td></tr>
+    <tr><td><span class="must">黃金標準</span></td><td>天乙做法已由 KEN 驗收</td><td>新 case 直接照做，唔使再問</td></tr>
+  </table>
+  <h3>填資料有衝突時，裁決次序（由高到低）</h3>
+  <ol class="tight">
+    <li><b>KEN 明確指示</b>（口頭／手寫批注）</li>
+    <li><b>官方文件原文</b>（CR / NNC1 / BR / HKID / 僱傭合約）</li>
+    <li><b>天乙既有做法</b>（黃金標準）</li>
+    <li>AI 推論　<span class="no">最低，唔可以靠估</span></li>
+  </ol>
+  <p class="note">⚠️ 當「官方文件」同「KEN 一貫慣例」衝突 → <b>跟 KEN</b>，但必須喺 08 指引／09 清單<b>寫明差異</b>，唔可以自己改。</p>
+</div>
+
+<!-- ============ 1 ============ -->
+<div class="card" id="s1">
+  <h2><span class="num">1</span> 填表鐵則 12 條</h2>
+  <ul class="tight">
+    <li><b>1. 交付永遠係 <code>out_ticked/</code>，唔係 <code>out/</code>。</b> <code>out/</code> 係疊字後、繪剔前嘅半成品。<span class="no">2026-10-29 中過</span></li>
+    <li><b>2. <code>draw_ticks.py</code> 一定要喺所有 <code>fill_*.py</code> 之後跑。</b>次序錯 → 剔格會被 fill 嘅輸出蓋掉。<span class="no">2026-10-23 中過</span></li>
+    <li><b>3. 剔格用「塗黑實心方塊」（黑度 ≥80%），唔係剔號、唔係細格。</b>掃描／審查最穩陣（KEN 明確要求）。</li>
+    <li><b>4. 官方表所有 Date 欄一律留空</b>，由簽署人簽名時親手填當日。例外：自製 06／07 要填動態日期。</li>
+    <li><b>5. 座標唔可以靠估。</b>必須由空白表 AcroForm 抽 <code>/Btn</code> rect，再用 pdfplumber 抽右側 label 逐個核對。</li>
+    <li><b>6. 中英混排一定要分段設字型</b>（拉丁 helv、中文 MSJH），否則英文變全寬 <code>D i r e c t o r</code>。</li>
+    <li><b>7. 英文姓名一律 BLOCK LETTERS 全大寫</b>（表格明文要求），五份表必須一致。</li>
+    <li><b>8. 中文姓名以香港證件為準（繁體）</b>。護照／內地合約嘅簡體寫法屬同一人，但 HK 表格一律用繁體。</li>
+    <li><b>9. 地址必須分欄</b>，唔可以全部塞落「街道」欄；City / Country 只能喺香港以外地址填。</li>
+    <li><b>10. 兩個中介人號碼唔可以互換</b>：MPF 註冊編號 ≠ Agent／Broker Code（見第 12 節）。<span class="no">三份 case 全錯過</span></li>
+    <li><b>11. 照抄原文，唔好「合理化」。</b>官方文件某欄留空 = 唔填；拼音、地錯字都唔可以順手改。</li>
+    <li><b>12. 每次改完 script 一定要重跑全流程</b>，並確認 output mtime 遲過 script mtime。</li>
+  </ul>
+</div>
+
+<!-- ============ 2 ============ -->
+<div class="card" id="s2">
+  <h2><span class="num">2</span> 天乙 9 件套交付規格 <span class="must">黃金標準</span></h2>
+  <table>
+    <tr><th>#</th><th>檔案</th><th>表單版本</th><th>頁</th><th>來源</th><th>剔格</th><th>簽章</th></tr>
+    <tr><td>01</td><td>GS-DDA 直接付款授權書</td><td>GS-DDA-25V1</td><td>4</td><td>raw/</td><td>2</td><td>✓✓</td></tr>
+    <tr><td>02</td><td>GS-ERA 僱主參與協議（主表）</td><td>GS-ERA-26V1</td><td>26</td><td>raw/</td><td>18</td><td>✓✓</td></tr>
+    <tr><td>03</td><td>GS-REEA 成員登記表格</td><td>GS-REEA-26V1</td><td>17</td><td>raw/</td><td>5</td><td>—</td></tr>
+    <tr><td>04</td><td>RS 付款結算書（僱主供款）</td><td>MPF RS NEW (05/2022)</td><td>2</td><td>raw/</td><td>1</td><td>—</td></tr>
+    <tr><td>05</td><td>MPF-IFF 中介人履行職務表格</td><td>MPF IFF (07/2026)</td><td>3</td><td>raw/</td><td>0</td><td>✓✓</td></tr>
+    <tr><td>06</td><td>董事會決議書 <span class="warn">自製</span></td><td>—</td><td>1</td><td>AI 生成</td><td>—</td><td>✓✓</td></tr>
+    <tr><td>07</td><td>公司架構圖 <span class="warn">自製</span></td><td>—</td><td>1</td><td>AI 生成</td><td>—</td><td>✓✓</td></tr>
+    <tr><td>08</td><td>剔格及簽署指引（另紙） <span class="warn">自製</span></td><td>—</td><td>—</td><td>AI 生成</td><td>—</td><td>—</td></tr>
+    <tr><td>09</td><td>交付清單 <span class="warn">自製</span></td><td>—</td><td>—</td><td>AI 生成</td><td>—</td><td>—</td></tr>
+  </table>
+  <div class="danger">
+    ⚠️ <b>版本陷阱（之前 skill 寫錯晒）：</b>
+    <ul class="tight" style="margin-top:6px;">
+      <li>成套係 <b>9 件</b>，唔係 7 件。缺其中一份 = 交付唔完整。</li>
+      <li>RS 有<b>兩款完全不同嘅表</b>：13 頁嘅 <code>RS-26V3</code>（開戶後一般用途）<b>vs</b> 2 頁嘅 <code>MPF RS NEW (05/2022)</code>（form code <code>*CE2205*</code>，天乙用呢份）。<b>唔可以撈亂。</b></li>
+      <li>「雇主供款」呢個俗稱 ＝ <b>RS 付款結算書</b>（天乙版本即表格資料夾 <code>04</code>）。</li>
+      <li>MPF-IFF 官方最新版 <b>(07/2026)</b>，md5 <code>8ee52e01ff814c9ec73fbf5731a77a02</code>，唔使再登 manutouch 攞。</li>
+    </ul>
+  </div>
+  <h3>官方空白表統一供應位置</h3>
+  <pre>C:/Users/user/WorkBuddy/2026-07-17-15-57-49/manulife-kb-restore/ManulifeKB/raw/
+  MPF_IFF.pdf（= MPF IFF 07/2026，3 頁，36 欄全空）
+  GS-ERA.pdf / GS-DDA.pdf / GS-REEA.pdf
+  GS-PAA.pdf / GS-SEPA.pdf / GS-SVCA.pdf / GS-SVCW-25V1.pdf
+  GS-TVCA.pdf / GS-VCW-25V1.pdf / GS-CC-25V1.pdf / GS-REEA.pdf</pre>
+  <p class="note">⚠️ 之前 skill 寫「手上嘅樣本 PDF 係已填樣本，唔可以疊字交件」——<b>呢句係錯嘅</b>。經 md5 核對，4 個 case 嘅 <code>MPF-IFF-.pdf</code> 同 raw/ 官方空白原檔<b>逐 byte 一致</b>，全部係乾淨空白表，可以直接疊字。</p>
+</div>
+
+<!-- ============ 3 ============ -->
+<div class="card" id="s3">
+  <h2><span class="num">3</span> CASE 資料夾結構（新 case 照開）</h2>
+  <pre>CASE_公司名/
+├── forms/          官方空白表副本（只讀，絕不可改動）
+│     GS-DDA.pdf  GS-ERA.pdf  GS-REEA.pdf  MPF-IFF-.pdf  RS_付款結算書_EB_MPF_RS_NEW.pdf
+├── _src/           客戶原件（正本掃描／拍照）
+│     └── render/  原件逐頁 PNG（讀批注前先 crop + upscale ≥2.2x）
+├── tools/          ⭐ 由 TIANYI_CASE/tools 整個複製，只改常數
+│     fill_era.py  fill_dda.py  fill_reea.py  fill_rs.py  fill_iff.py
+│     draw_ticks.py      ← 剔格座標清單
+│     generate_docs.py   ← 06/07
+│     make_guidance_*.py ← 08
+│     make_checklist.py  ← 09
+│     verify_ticks.py  check_fit.py  final_check.py  audit_identity.py  build_all.py
+├── out/            半成品：疊字後、繪剔前　<span class="c"># ⛔ 不可交付</span>
+├── out_ticked/     ✅ 唯一交付版本（01–09 全齊）
+└── preview/        渲染 PNG，目視驗收用</pre>
+  <p class="note">💡 天乙嘅 tools/ 係<b>唯一受過驗收嘅工具鏈</b>。新 case 唔好由零寫，複製後改常數區（ company / person / bank / intermediary ）最穩。</p>
+</div>
+
+<!-- ============ 4 ============ -->
+<div class="card" id="s4">
+  <h2><span class="num">4</span> 正確執行順序 <span class="must">黃金標準</span></h2>
+  <pre>① 疊字（順序固定）
+     fill_era.py → fill_dda.py → fill_reea.py → fill_rs.py → fill_iff.py
+
+② draw_ticks.py        <span class="c"># ⚠️ 必須喺 ① 全部完成之後</span>
+
+③ generate_docs.py     <span class="c"># 06 決議書 / 07 架構圖</span>
+
+④ make_guidance_*.py → make_checklist.py   <span class="c"># 08 / 09</span>
+
+⑤ cp out/05..09_*.pdf → out_ticked/       <span class="c"># 01–04 由 draw_ticks 產生，唔好手動覆寫</span>
+
+⑥ 自檢（四支全跑）verify_ticks → check_fit → final_check → audit_identity
+⑦ 目視 render：ERA p3/p5/p9/p10/p24/p26 + REEA p2 + IFF p2 + RS p1</pre>
+  <div class="danger">
+    ⚠️ <b>最致命嘅一步漏做：</b>如果只跑 <code>fill_*.py</code> 然後手動 <code>cp out/*.pdf out_ticked/</code> —— <b>01–04 嘅剔格會全部消失</b>，而我(out)仍然會有剔。<br>
+    → 2026-10-23 中過一次，交付前目視先發現。2026-10-29 又因為搞錯 <code>out/</code> vs <code>out_ticked/</code> 而送錯檔案。<b>所以第 13 節嘅像素黑度驗證係強制。</b>
+  </div>
+  <p class="note">一鍵執行：<code>python tools/build_all.py</code>（內含全部步驟 + 自檢）。但跑完<b>仍然要自己驗證 <code>out_ticked/</code> 嘅剔格黑度</b>。</p>
+</div>
+
+<!-- ============ 5 ERA ============ -->
+<div class="card" id="s5">
+  <h2><span class="num">5</span> GS-ERA 26 頁逐頁規格 <span class="must">天乙基準</span></h2>
+  <table>
+    <tr><th style="width:52px;">頁</th><th style="width:20%;">欄位 field</th><th>填咩</th><th style="width:16%;">天乙實例</th></tr>
+    <tr><td><b>2</b></td><td class="f">English<br>fill_1_2</td><td>公司英文全名 / 中文全名</td><td>Tianyi Innovation Limited<br>天乙創新國際有限公司</td></tr>
+    <tr><td><b>3</b></td><td class="f">Business Other Registration No 1<br>1<br>comb_5 / comb_6 / Text1 / Text2<br>fill_3<br>fill_4_4<br>comb_1</td>
+        <td>(i) BR 編號（8 位）<br>Branch No.（BR 尾段 -XXX）<br>(i) CI 編號（= CR 編號）／(ii) 註冊日期 DD MM YYYY<br>(iii) 註冊地點<br>(xxii) Others 業務性質<br>(7) 參加計劃僱員人數</td>
+        <td>80528090<br>000<br>80528090 / 02 06 2026<br>Hong Kong<br>國際貿易，代理服務，諮詢服務<br>1</td></tr>
+    <tr><td><b>4</b></td><td class="f">RA001…RA009</td><td>註冊辦事處（分 8 欄）＋地區剔格＋City／Country</td><td>603R 6/F / Block B / CHUNG MEI CENTRE / 15 HING YIP STREET / KWUN TONG / Kwun Tong / Hong Kong</td></tr>
+    <tr><td><b>5</b></td><td class="f">comb_1_2 / comb_2<br>fill_10 / fill_11_2<br>fill_12_2<br>undefined_20<br>DD MM YYYY / Text3 / Text4<br>fill_13<br>undefined_21…undefined_25<br>undefined_26 / comb_5_2</td>
+        <td><b>B(1) 計劃獲授權人 1</b><br>姓 / 名（BLOCK LETTERS）<br>中文姓 / 名<br>職位<br>HKID Card 號碼<br>出生日期<br>國籍<br>居住地址分欄<br>手機 / Email</td>
+        <td>CONG / ZHIGANG<br>叢 / 志剛<br>董事<br>F4869333(4)<br>17 11 1980<br>Chinese<br>見第 12 節地址欄<br>13824360558<br>jackcong1980@qq.com</td></tr>
+    <tr><td><b>7</b></td><td>—</td><td><b>B(2) 公司聯絡人</b>：只剔「(i) 與授權人 1 相同」，詳細資料<b>全部留空</b></td><td>—</td></tr>
+    <tr><td><b>8</b></td><td class="f">comb_6_5 / comb_7_3 等</td><td><b>頂部</b> = p7 延續（剔「相同」→ 留空）<br><b>下半</b> = B(4) 主事人 1：姓名／HKID／DOB／國籍／住址</td><td>叢志剛（同一人）</td></tr>
+    <tr><td><b>9</b></td><td class="f">comb_5_5 / comb_6_6<br>fill_13_3 / fill_14</td><td><b>上半 (ii) Principal No.2 → 整段留白</b>（只有一位主事人）<br><b>下半 (5) BO (i) Title + (ii) Name</b></td><td>Mr / CONG ZHIGANG</td></tr>
+    <tr><td><b>10</b></td><td class="f">0 / DD MM YYYY_5 / fill_1_10<br>undefined_48…fill_9_3<br>DD MM YYYY_6 / Text40 / Text41</td>
+        <td><b>BO 1 續頁</b> (iii) 證件 / (iv) DOB / (v) 國籍 / (vi) 住址<br><b>C 段</b>：(1) 計劃生效日期 DD MM YYYY<br>(ii) 工資組別名稱 / (iii) Payroll Group ID → <b>留空</b></td><td>F4869333(4) / 17 11 1980 / Chinese<br>01 10 2026</td></tr>
+    <tr><td><b>11</b></td><td class="f">i_6</td><td>只剔「(i) Same as Scheme Authorized Person 1」，其餘留空</td><td>—</td></tr>
+    <tr><td><b>12</b></td><td class="f">DD<br>DD_4</td><td>(5)(i)a Monthly + 首次供款開始日（<b>永遠填 01</b>）<br>(5)(ii) 供款帳單編印日 → <b>留空</b>（官方預設 15 號）</td><td>01</td></tr>
+    <tr><td><b>14</b></td><td class="f">i_11</td><td>E(1)(i) Hong Kong ONLY</td><td>—</td></tr>
+    <tr><td><b>15</b></td><td class="f">fill_7_5</td><td>E(3)(iv) Active NFE + 業務描述（同 p3 業務性質）</td><td>國際貿易，代理服務，諮詢服務</td></tr>
+    <tr><td><b>24</b></td><td class="f">fill_9_5<br>fill_2_16<br>fill_3_10<br>fill_4_8<br>undefined_66<br>fill_6_5<br>undefined_67</td>
+        <td><b>G 段授權簽署 6 行右邊全填</b>（KEN 指示：只填人名唔夠）<br>Name（BLOCK LETTERS）<br>Capacity 職分<br>HKID / Passport No.<br>Nationality<br>Residential Address（單行 259pt，太長要縮）<br><b>Date → 留空</b><br>Email</td>
+        <td>CONG ZHIGANG<br>Director<br>F4869333(4)<br>Chinese<br>Flat 03C, Building 82 Meilin Yicun, No. 19 Meili Road, Futian District, Shenzhen, Guangdong, China<br>（空）<br>jackcong1980@qq.com</td></tr>
+    <tr><td><b>26</b></td><td class="f">fill_1_15 / fill_3_11 / fill_5_8<br>fill_2_18 / fill_4_10 / fill_6_6</td>
+        <td><b>中介人 2 組 × 3 行</b>：Name / MPF Registration No. / Agent·Broker Code</td>
+        <td>TANG WING KA / 146789 / 368836<br>CHAN TAK KIN / 163627 / 380952</td></tr>
+  </table>
+  <div class="alert">
+    <b>⚠️ ERA p24 兩個極易互調嘅欄位：</b><code>fill_6_5</code> = <b>Date（要留空）</b>，<code>undefined_67</code> = <b>Email（要填）</b>。掉轉會令日期被填死。
+  </div>
+  <div class="alert">
+    <b>⚠️ p3 (5) 機構類別已知爭議：</b>天乙／瑞曦／電夏全部剔 <b>(i) Limited Partnership 有限合夥</b>，但 CR／NNC1 正本實為<b>私人有限公司</b>。<br>
+    → 呢個係 <b>KEN 一貫指示</b>，跟指示做，但<b>必須喺 08 指引／09 清單寫明差異</b>。未經 KEN 確認，唔可以自作主張改剔私人有限公司。
+  </div>
+</div>
+
+<!-- ============ 6 DDA ============ -->
+<div class="card" id="s6">
+  <h2><span class="num">6</span> GS-DDA 4 頁規格</h2>
+  <table>
+    <tr><th style="width:34%;">欄位</th><th>填咩</th><th style="width:26%;">天乙實例</th></tr>
+    <tr><td class="f">1</td><td>公司英文名稱</td><td>Tianyi Innovation Limited</td></tr>
+    <tr><td class="f">fill_2</td><td>銀行全名</td><td>China Construction Bank (Asia) Corporation Limited</td></tr>
+    <tr><td class="f">undefined_2</td><td><b>Bank No.</b> 銀行編號（3 位）</td><td>009</td></tr>
+    <tr><td class="f">undefined_3</td><td><b>Branch No.</b> 分行編碼 ＝ <b>帳號頭 3 位</b></td><td>846</td></tr>
+    <tr><td class="f">comb_3</td><td><b>Account No.</b> 戶口號碼 ＝ 帳號<b>餘下</b>位數</td><td>210565606</td></tr>
+    <tr><td class="f">fill_6_2</td><td>戶名（<b>全大寫、冇標點</b>）</td><td>TIANYI INNOVATION LIMITED</td></tr>
+    <tr><td class="f">undefined_7</td><td>Others please specify → 已剔 CI，<b>必須留空</b></td><td>（空）</td></tr>
+    <tr><td class="f">undefined_8</td><td>Document No.（CI 編號，<b>唔加 -000</b>）</td><td>80528090</td></tr>
+    <tr><td class="f">fill_7_2</td><td><b>Upper Limit for Each Payment 每次付款上限</b> → 客戶未提供就留空</td><td>（空）</td></tr>
+    <tr><td class="f">fill_9_26 / fill_9_29</td><td>日期 → <b>留空</b></td><td>（空）</td></tr>
+  </table>
+  <div class="danger">
+    ⚠️ <b>銀行帳號拆分鐵則：</b>完整帳號 <code>846210565606</code> → Bank 009（BANK CODE）／Branch <b>846</b>（頭 3 位）／Account <b>210565606</b>（餘下）。<br>
+    ⚠️ <code>undefined_8</code>（Upper Limit）係金額欄，<b>唔係 BR 號</b>，填錯銀行會彈件。<br>
+    ⚠️ 公司名同戶名<b>一律唔可以有標點</b>（KEN 2026-10-21 指示）。
+  </div>
+</div>
+
+<!-- ============ 7 REEA ============ -->
+<div class="card" id="s7">
+  <h2><span class="num">7</span> GS-REEA 17 頁規格（<b>每位成員一份</b>）</h2>
+  <table>
+    <tr><th style="width:52px;">頁</th><th style="width:30%;">欄位</th><th>填咩</th><th style="width:22%;">天乙實例</th></tr>
+    <tr><td><b>1</b></td><td class="f">undefined_2 / fill_3<br>comb_1 / undefined_3</td><td>僱主英文／中文名<br>帳戶號碼（開戶後先知）→ 留空／Payroll Group ID → 留空</td><td>Tianyi Innovation Limited<br>天乙創新國際有限公司</td></tr>
+    <tr><td><b>2</b></td><td class="f">comb_1_2 / the Member<br>fill_1 / fill_2<br>Text9/10/11<br>undefined_6<br>fill_3_2 / fill_4_2<br>Country Area Code / SMS…<br>comb_9<br>undefined_7…fill_12</td>
+        <td>成員姓／名（BLOCK LETTERS）<br>中文姓／名<br>DOB DD MM YYYY<br>HKID<br>國籍 / Place of Birth（Not compulsory → 留空）<br>區碼 / 手機<br>Email<br>居住地址分欄</td>
+        <td>CONG / ZHIGANG<br>叢 / 志剛<br>17 11 1980<br>F4869333(4)<br>Chinese /（空）<br>86 / 13824360558<br>jackcong1980@qq.com<br>見第 12 節</td></tr>
+    <tr><td><b>3</b></td><td>—</td><td>通訊地址（與住址相同→全留空）／自願性供款（無→留空）</td><td>—</td></tr>
+    <tr><td><b>4</b></td><td class="f">i</td><td>D(1)(i) Hong Kong ONLY ＋ 三行表格（只有香港→留空）</td><td>—</td></tr>
+    <tr><td><b>5–6</b></td><td class="f">0#0 / 1#0<br>2#0 / 3#0</td><td><b>DIS 投資授權</b>：強制性「僱主部分」+「成員部分」各填 <b>100</b><br>自願性兩欄 + 所有基金行 → <b>留空</b>（自動行 DIS）</td><td>100 / 100</td></tr>
+    <tr><td><b>15</b></td><td class="f">fill_1_5</td><td>成員聲明日期 → <b>留空</b></td><td>（空）</td></tr>
+    <tr><td><b>16</b></td><td class="f">Text20/21/22<br>i_2<br>fill_1_6<br>Text33-38<br>fill_3_5</td><td>(1) 受僱日期 DD MM YYYY<br>(2)(i) Newly Employed 新聘<br>(5) Job Title 職位<br>參加計劃日期等 → 留空<br>僱主簽署日期 → <b>留空</b></td><td>01 10 2026<br>（剔）<br>董事兼總經理</td></tr>
+  </table>
+  <div class="alert">
+    ⚠️ <b>成員住香港以外</b>（如深圳）→ p2 嘅「香港／九龍／新界」三個地區剔格<b>全部留空（唔係漏剔）</b>，改為填 City = Shenzhen、Country = China。<br>
+    ⚠️ p5/p6 投資授權<b>全部留白</b>係正確做法（表格 p5 第 1 點明文：冇指定就自動行 DIS）。p6 底部「Total 100% × 4」係宏利<b>預印</b>文字，唔係我填。
+  </div>
+</div>
+
+<!-- ============ 8 RS ============ -->
+<div class="card" id="s8">
+  <h2><span class="num">8</span> RS 付款結算書 2 頁規格（＝「雇主供款」）</h2>
+  <table>
+    <tr><th style="width:30%;">欄位</th><th>填咩</th><th style="width:26%;">天乙實例</th></tr>
+    <tr><td class="f">EmployerName1</td><td>僱主名稱（只有一欄 → 填<b>英文</b>）</td><td>Tianyi Innovation Limited</td></tr>
+    <tr><td class="f">SubSchemeNo1</td><td>附屬計劃編號（開戶後編配）→ <b>留空</b></td><td>（空）</td></tr>
+    <tr><td class="f">MemberSurname1_EN<br>MemberGivenName1_EN<br>MemberName1_CH</td><td>成員姓 / 名（BLOCK LETTERS）/ 中文姓名</td><td>CONG / ZHIGANG / 叢志剛</td></tr>
+    <tr><td class="f">MemberID1 / MemberID1sp</td><td>HKID <b>分兩格</b>（主號 / 括號內校驗位）</td><td>F4869333 / 4</td></tr>
+    <tr><td class="f">EmploymentDate1</td><td>受僱日期 DD-MM-YYYY</td><td>01-10-2026</td></tr>
+    <tr><td class="f">PayFrom1 / PayTo1</td><td>支薪期起 / 訖</td><td>01-10-2026 / 31-10-2026</td></tr>
+    <tr><td class="f">Income1</td><td>有關入息（月薪）</td><td>30000</td></tr>
+    <tr><td class="f">MMC1 / EMC1</td><td>成員 5% / 僱主 5%</td><td>1500 / 1500</td></tr>
+    <tr><td class="f">CS1</td><td>🔴 Contribution Surcharge 供款附加費（如適用）→ <b>一律留空</b></td><td>（空）</td></tr>
+    <tr><td class="f">TC1</td><td>Total contributions 供款<b>總額</b>（唯一嘅合計欄）</td><td>3000</td></tr>
+    <tr><td class="f">BankName1 / ChequeNo1 / ChequeAmount1</td><td>直接扣帳 → <b>全部留空</b></td><td>（空）</td></tr>
+    <tr><td class="f">Name&amp;Title1</td><td>簽署人姓名 + 職銜</td><td>叢志剛 CONG ZHIGANG, Director</td></tr>
+    <tr><td class="f">Date1</td><td>填表日期 → <b>留空</b></td><td>（空）</td></tr>
+    <tr><td class="f">c_Employed1</td><td>(6) 此成員曾否受僱於本公司 → 剔 <b>No</b></td><td>（實心格）</td></tr>
+  </table>
+  <div class="danger">
+    🔴 <b>最尾嗰欄唔係「合共」！</b><br>
+    KEN 2026-10-23 截圖圈住明講「<b>最尾果欄唔洗填</b>」。<code>CS1</code>（rect x 起 636 = 最右欄）係 <b>Contribution Surcharge 供款附加費（如適用）</b>，正常情況唔適用 → <b>留空</b>。<br>
+    合計只可以喺 <code>TC1</code>（x 273–412）填一次。<br>
+    <b>天乙／瑞曦／電夏三份 case 全部誤填 3000／2000，已改正。</b>新 case 再填落 CS1 = 明知故犯。
+  </div>
+  <p class="note">💡 RS 要<b>每個支薪期一份</b>，而且必須喺新僱員入會（REEA 交完）之後先可以供款。</p>
+</div>
+
+<!-- ============ 9 IFF ============ -->
+<div class="card" id="s9">
+  <h2><span class="num">9</span> MPF-IFF 3 頁規格</h2>
+  <table>
+    <tr><th style="width:52px;">頁</th><th style="width:26%;">欄位</th><th>填咩</th><th style="width:24%;">天乙實例</th></tr>
+    <tr><td><b>1</b></td><td class="f">B Company name<br>B Business No<br>B China name / B HKID / B Passport No<br>Check Box No / Yes</td>
+        <td>客戶全名（公司客填公司中英文名）<br>BR 編號<br>個人資料 → <b>公司客留空</b><br>B 部特別需要 → <b>剔格留白，由客戶本人剔 No</b></td>
+        <td>Tianyi Innovation Limited 天乙創新國際有限公司<br>80528090-000<br>（空）<br>（留白）</td></tr>
+    <tr><td><b>2</b></td><td class="f">D name / D Agent code<br>D name1 / D Agent code1<br>f_RoomOtherA / DD MM YYYY / hr mm<br>c_RoomClass6..10</td>
+        <td><b>D 段中介人</b>：全名 + <b>Agent code</b>（第 1 組／第 2 組）<br>For Agent Use Only（僱員數目、eMPF Ref、收件日期時間）→ <b>全留空</b><br>文件類別剔格 → <b>留白</b></td>
+        <td>TANG WING KA / 368836<br>CHAN TAK KIN / 380952</td></tr>
+    <tr><td><b>3</b></td><td colspan="2">第 3 頁一般唔使填（按實際需要）</td><td>—</td></tr>
+  </table>
+  <div class="danger">
+    🔴 <b>IFF p2 D 段只有 2 行，冇「MPF 註冊編號」欄！</b><br>
+    嗰格係 <b>Agent／Broker Code 經紀╱代理人編號</b> → 填 <b>368836</b> / <b>380952</b>。<br>
+    <b>千萬唔可以填 146789／163627</b>（嗰兩個係 MPF 註冊編號，只喺 ERA p26 用）。<br>
+    <span class="no">2026-10-23 KEN 指出：之前三份 case 全部填錯。</span>
+  </div>
+</div>
+
+<!-- ============ 10 ============ -->
+<div class="card" id="s10">
+  <h2><span class="num">10</span> 自製文件 06／07 規格</h2>
+  <h3>06 董事會決議書 — 8 個必備元素</h3>
+  <ol class="tight">
+    <li>公司英文全名（<b>同 BR 100% 一致</b>）</li>
+    <li>BR 號碼（8 位 + 分行碼完整格式）</li>
+    <li>公司註冊地址（中英）</li>
+    <li>會議日期（<b>動態 <code>datetime.date.today()</code>，唔准硬編碼</b>）</li>
+    <li>會議地點</li>
+    <li>出席董事姓名</li>
+    <li>決議內容：委任 CAP + 香港身份證號碼 + 授權辦 eMPF 事宜</li>
+    <li>董事簽名 + 公司章 + 日期</li>
+  </ol>
+  <div class="alert">
+    ⚠️ <b>KEN 2026-10-23 明示：自製文件「日期 (Date)」欄上方<u>唔要橫線</u></b>（佢原話「我不要有」）。只保留董事姓名上面嗰條簽名線。
+  </div>
+  <h3>07 公司架構圖 — 必含</h3>
+  <ul class="tight">
+    <li>公司名 + 持股百分比；<b>每層中間公司要列註冊國家／地區</b></li>
+    <li><b>架構圖要列晒全部股東，即使持股 &lt; 25%</b>（持股 &lt;25% 唔需要列為實益擁有人，但架構圖要列）</li>
+    <li>最終實益擁有人（100% 由公司持有時，董事如經該公司最終持有，可由客戶申報為最終實益擁有人）</li>
+    <li><b>不記名股票聲明</b>（離岸公司必須）</li>
+    <li>Certified by ___ + 董事簽名 + 章 + 日期</li>
+  </ul>
+  <p class="note">💡 虛線框 = 職務／申報關係；實線 = 股權關係。文字放連線兩側，唔好壓線。</p>
+</div>
+
+<!-- ============ 11 ============ -->
+<div class="card" id="s11">
+  <h2><span class="num">11</span> 26 格實心剔總表（連座標） <span class="must">黃金標準</span></h2>
+  <p>座標係 <b>PDF 座標（頁底為原點，pt）</b>，直接抄落新 case 嘅 <code>draw_ticks.py</code>。<b>但新 case 若換咗表格版本，座標必須重新抽。</b></p>
+  <table>
+    <tr><th style="width:12%;">表</th><th style="width:5%;">頁</th><th style="width:22%;">rect [x0,y0,x1,y1]</th><th>內容</th></tr>
+    <tr><td rowspan="18"><b>ERA</b></td><td>3</td><td class="f">[46,758,58,770]</td><td>(4)(i) (BR) Business Registration 商業登記</td></tr>
+    <tr><td>3</td><td class="f">[46,475,58,487]</td><td>(5)(i) Limited Partnership 有限合夥（KEN 一貫指示）</td></tr>
+    <tr><td>3</td><td class="f">[299,106,311,118]</td><td>(6)(xxii) Others 其他，請註明</td></tr>
+    <tr><td>4</td><td class="f">[276,657,288,669]</td><td>註冊地址地區 = 九龍 Kowloon（觀塘屬九龍）</td></tr>
+    <tr><td>5</td><td class="f">[180,641,192,653]</td><td>授權人 = Mr 先生</td></tr>
+    <tr><td>5</td><td class="f">[59,491,71,502]</td><td>身分證明 = HKID Card 香港身份證</td></tr>
+    <tr><td>7</td><td class="f">[28,592,40,604]</td><td>公司主要聯絡人 = 與計劃獲授權人 1 相同</td></tr>
+    <tr><td>7</td><td class="f">[28,193,40,205]</td><td>公司第二聯絡人 = 與計劃獲授權人 1 相同</td></tr>
+    <tr><td>8</td><td class="f">[180,500,192,512]</td><td>主事人 = Mr 先生</td></tr>
+    <tr><td>8</td><td class="f">[59,366,71,377]</td><td>主事人身分證明 = HKID Card</td></tr>
+    <tr><td>9</td><td class="f">[180,199,193,212]</td><td>實益擁有人 1 = Mr 先生（p9 <b>下半</b>）</td></tr>
+    <tr><td>10</td><td class="f">[59,760,71,771]</td><td>實益擁有人 1 續頁 (iii) = HKID Card</td></tr>
+    <tr><td>10</td><td class="f">[61,322,71,333]</td><td>(2)(i) a. Regular Employee 一般僱員（工資組別類別）</td></tr>
+    <tr><td>11</td><td class="f">[45,687,57,700]</td><td>(i) Same as Scheme Authorized Person 1</td></tr>
+    <tr><td>12</td><td class="f">[46,736,58,748]</td><td>(5)(a) Monthly 每月（供款頻率）</td></tr>
+    <tr><td>12</td><td class="f">[44,372,56,384]</td><td>(6)(i) Direct Debit 直接扣帳</td></tr>
+    <tr><td>14</td><td class="f">[44,239,56,251]</td><td>E(1)(i) Hong Kong ONLY 只有香港</td></tr>
+    <tr><td>15</td><td class="f">[145,189,158,201]</td><td>E(3)(iv) Active NFE other than the above</td></tr>
+    <tr><td rowspan="2"><b>DDA</b></td><td>1</td><td class="f">[318,326,330,338]</td><td>戶口持有人類別 = 公司 Corporate</td></tr>
+    <tr><td>1</td><td class="f">[207,232,219,244]</td><td>開立戶口文件類別 = Certificate of Incorporation</td></tr>
+    <tr><td><b>RS</b></td><td>1</td><td class="f">[692,393,712,410]</td><td>(6) 此成員曾否受僱於貴公司 = <b>No</b></td></tr>
+    <tr><td rowspan="5"><b>REEA</b></td><td>2</td><td class="f">[154,670,167,682]</td><td>成員 = Mr 先生</td></tr>
+    <tr><td>2</td><td class="f">[464,552,476,563]</td><td>成員性別 = Male 男</td></tr>
+    <tr><td>2</td><td class="f">[44,457,56,469]</td><td>身分證明 = HKID Card 香港身份證</td></tr>
+    <tr><td>4</td><td class="f">[44,760,56,772]</td><td>D(1)(i) Hong Kong ONLY 只有香港</td></tr>
+    <tr><td>16</td><td class="f">[159,721,170,731]</td><td>F(2)(i) Newly Employed 新聘</td></tr>
+  </table>
+  <div class="alert">
+    <b>判斷界線：可以代剔 vs 必須留白</b>
+    <table style="margin-top:6px;">
+      <tr><th>✅ 可以代剔（純事實）</th><th>⛔ 必須留白（要簽署人自己決定）</th></tr>
+      <tr><td>公司類別、身分證明類型（HKID／護照）、性別、稱謂<br>供款頻率（Monthly）、付款方式（Direct Debit）<br>稅務「只有香港」、Active NFE<br>僱員類別（新聘）、工資組別（一般僱員）<br>曾否受僱於本公司（No）</td>
+          <td>客戶本人聲明（IFF 特別需要人士、私隱「不同意」格）<br>只適用於他人嘅段落（第二位主事人、第二位聯絡人）<br>純偏好而唔影響事實（電子／紙本遞交）<br>成員住香港以外時嘅港九新界地區格</td></tr>
+    </table>
+    <p style="margin-top:6px;"><b>判斷句：呢格答錯會唔會變成虛假陳述？</b> 會 → 留畀簽署人；純事實 → 我剔。</p>
+  </div>
+  <div class="danger">
+    <b>剔完必驗（三重）</b>
+    <ol class="tight" style="margin-top:4px;">
+      <li><code>verify_ticks.py</code> — 座標 ↔ 真實 <code>/Btn</code> rect ↔ 右側 label 三方對照，距離 &gt;2.5 即報錯</li>
+      <li><b>像素黑度</b> — crop 該格計深色比例，<b>≥80% = 已剔；&lt;20% = 未剔</b>（呢個係 catch 交付錯版本嘅關鍵）</li>
+      <li><b>目視 render 逐頁</b> — 唔可以只信數字</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ============ 12 ============ -->
+<div class="card" id="s12">
+  <h2><span class="num">12</span> 日期 / 中介人 / 姓名 / 地址 通用規則</h2>
+
+  <h3>12.1 日期</h3>
+  <table>
+    <tr><th style="width:38%;">位置</th><th>規則</th></tr>
+    <tr><td>官方表格<b>所有</b> Date 欄</td><td><b>一律留空</b>，由簽署人親手填</td></tr>
+    <tr><td>ERA p12 (5)(i)a 供款開始日 <code>DD</code></td><td><b>永遠填 "01"</b>（1 號）。採集表寫「每月 28 日」＝客戶<b>付款日</b>，<b>唔係</b>供款開始日</td></tr>
+    <tr><td>ERA p12 (5)(ii) 供款帳單編印日 <code>DD_4</code></td><td>留空（官方預設 15 號）</td></tr>
+    <tr><td>自製文件（06／07）</td><td><code>datetime.date.today()</code> 動態產生，<b>唔准硬編碼</b></td></tr>
+    <tr><td>自製文件 Date 欄上方</td><td><b>唔要橫線</b>（KEN 指示）</td></tr>
+  </table>
+
+  <h3>12.2 中介人固定資料（唔使問客）</h3>
+  <table>
+    <tr><th>姓名</th><th>MPF Registration No. 強積金註冊編號</th><th>Agent / Broker Code 經紀／代理人編號</th></tr>
+    <tr><td><b>TANG WING KA</b>（主中介人，上格）</td><td class="money">146789</td><td class="money">368836</td></tr>
+    <tr><td><b>CHAN TAK KIN</b>（其他中介人，下格，要親筆簽）</td><td class="money">163627</td><td class="money">380952</td></tr>
+  </table>
+  <table>
+    <tr><th style="width:24%;">表格</th><th style="width:26%;">有咩欄</th><th>填咩</th></tr>
+    <tr><td><b>GS-ERA p26</b></td><td>每組 <b>3 行</b><br>Name / MPF Reg No. / Agent·Broker</td><td>TANG WING KA + <b>146789</b> + <b>368836</b><br>CHAN TAK KIN + <b>163627</b> + <b>380952</b></td></tr>
+    <tr><td><b>MPF-IFF p2 D 段</b></td><td>每組<b>只有 2 行</b><br>全名 / Agent code<br><span class="no">冇 MPF 註冊編號欄</span></td><td>TANG WING KA + <b>368836</b><br>CHAN TAK KIN + <b>380952</b><br>⛔ 唔好填 146789／163627</td></tr>
+  </table>
+
+  <h3>12.3 姓名</h3>
+  <ol class="tight">
+    <li><b>簡繁以香港證件為準（繁體）</b>。判斷次序：① HKID 正本 → ② NNC1／公司註冊處文件 → ③ 護照／內地文件 → ④ 採集表。</li>
+    <li>08 指引／09 清單要<b>同時列出兩種寫法並註明「屬同一人」</b>；但<b>提交文件（06／07）唔好印簡體字樣</b>。</li>
+    <li><b>採集表自己寫嘅英文名</b>（例如 "Jack"）如<b>冇任何官方文件支持 → 一律不採用</b>。</li>
+    <li><b>英文姓名一律 BLOCK LETTERS 全大寫</b>：姓 <code>CONG</code>、名 <code>ZHIGANG</code>（唔可以 <code>Zhigang</code>）。五份表要一致。</li>
+    <li>照抄原文，<b>唔可以「合理化」</b>：拼音、地錯字都要保留（歷史錯：Ycwan→Yewan、Baiqiaoyuan→Baiqueyuan、董存娟→韓啟娟）。</li>
+  </ol>
+
+  <h3>12.4 地址（必須分欄）</h3>
+  <table>
+    <tr><th style="width:22%;">欄</th><th>正確內容</th><th style="width:32%;">天乙實例（NNC1 第 25 項）</th></tr>
+    <tr><td>Flat / Room</td><td>室</td><td>Flat 03C</td></tr>
+    <tr><td>Block 座</td><td>座</td><td>Building 82</td></tr>
+    <tr><td>Building / Estate</td><td>樓／屋苑</td><td>Meilin Yicun</td></tr>
+    <tr><td><b>Street 街道</b></td><td><b>只放街道</b></td><td>No. 19 Meili Road, Meilin Yicun Community, Meilin Subdistrict</td></tr>
+    <tr><td><b>District Area 區域</b></td><td><b>只放區＋省</b></td><td>Futian District, Guangdong Province</td></tr>
+    <tr><td>City 城市</td><td>城市</td><td>Shenzhen</td></tr>
+    <tr><td>Country 國家</td><td>國家</td><td>China</td></tr>
+  </table>
+  <p class="note">
+    ❌ 錯法一：Street 欄塞晒成條地址、District 留空 → 重複 + 漏填<br>
+    ❌ 錯法二：District 寫「Futian District, <b>Shenzhen City</b>, Guangdong Province」而 City 又寫 Shenzhen → 重複<br>
+    📌 <b>註冊地址</b>用 <b>NNC1 第 3 項</b>原文（BR 正本用縮寫 BLK／CTR／ST 且缺地區，NNC1 較完整 → 以 NNC1 為準）
+  </p>
+  <div class="alert">
+    <b>長欄爆格處理：</b>pdffill 字級下限 5pt，低過會衝出欄位／出頁。用 <code>check_fit.py</code> 逐欄計。<br>
+    <b>ERA p24 住址欄只得 259pt（單行）</b> → 用「去重複語」版本（刪 Meilin Yicun Community／Subdistrict 等重複片語），原文全寫保留喺 p5／p8／p10 分欄地址。
+  </div>
+</div>
+
+<!-- ============ 13 ============ -->
+<div class="card" id="s13">
+  <h2><span class="num">13</span> 交付前五項驗收 + 三重驗證</h2>
+  <h3>13.1 四支自檢腳本（全部要跑）</h3>
+  <table>
+    <tr><th style="width:22%;">工具</th><th>捉咩</th><th style="width:16%;">合格條件</th></tr>
+    <tr><td class="f">verify_ticks.py</td><td>剔格座標錯置／剔錯隔離格</td><td>距離 ≤2.5</td></tr>
+    <tr><td class="f">check_fit.py</td><td>文字爆格</td><td>字級 ≥5pt</td></tr>
+    <tr><td class="f">final_check.py</td><td>Annots／MSJH 缺字／殘留上手客資料／頁數／DDA 帳號</td><td>PASS 全部驗收通過</td></tr>
+    <tr><td class="f">audit_identity.py</td><td>人名／地址／號碼命中矩陣 + 禁止詞 + 明細</td><td>全部 √，無「缺!」</td></tr>
+  </table>
+
+  <h3>13.2 五項</h3>
+  <ol class="tight">
+    <li><code>Annots = 0</code> — 表上冇任何殘留可編輯 widget（已扁平化）</li>
+    <li><b>剔格黑度 ≥80%</b> — 用像素驗，唔可以用肉眼「覺得有」</li>
+    <li><code>字型缺字 = 0</code> — 雙向掃描：中文唔用 helv、拉丁唔用 CJK 字型</li>
+    <li>每頁表頭必填欄有值 — 特別係公司名（ERA 每頁、REEA p1、RS p1）</li>
+    <li>日期／Not compulsory 欄留空</li>
+  </ol>
+
+  <h3>13.3 🔴 三重驗證（2026-10-29 新增，針對送錯版本）</h3>
+  <pre><span class="c"># ① 檔案來源驗證 — 交付前一定 check 路徑</span>
+✅ out_ticked/XX_已填.pdf      <span class="c"># 正確</span>
+⛔ out/XX_已填.pdf             <span class="c"># 半成品，冇剔格</span>
+
+<span class="c"># ② 像素黑度驗證 — 每格 crop 計深色比例</span>
+已剔 ≥80%   /  未剔 &lt;20%
+
+<span class="c"># ③ 目視 render — 必睇頁面</span>
+ERA p3 / p5 / p9 / p10 / p24 / p26
+REEA p2 ｜ IFF p2 ｜ RS p1 ｜ DDA p1</pre>
+  <div class="danger">
+    <b>一式四核（落客必做）</b>
+    <ul class="tight" style="margin-top:4px;">
+      <li>中英文名對唔對得上</li>
+      <li>有冇字尾差異（TELECOM / TELECOM<b>S</b> / COMMUNICATION<b>S</b>）</li>
+      <li>公司類型剔格對唔對</li>
+      <li>身份證／BR 號碼<b>跨頁</b>係唔係同一個</li>
+    </ul>
+  </div>
+  <p class="note">📌 <b>交付位置：</b>輸出到 <code>C:/Users/user/WorkBuddy/ManulifeKB/outputs/&lt;客戶名&gt;_CASE/</code>。<b>唔好放 Desktop</b>（⚠️ skills 內寫嘅 <code>E:\workbuddy\01_Outputs\...</code> 路徑<b>已經失效</b>——部機得 C: 磁碟，冇 E:）。文件含 PII，外傳時要遮蔽身份證／電話／郵箱／住址。</p>
+</div>
+
+<!-- ============ 14 ============ -->
+<div class="card" id="s14">
+  <h2><span class="num">14</span> 歷史中伏 Top 15（呢啲全部錯過）</h2>
+  <table>
+    <tr><th style="width:4%;">#</th><th style="width:30%;">中伏位</th><th>正確做法</th><th style="width:12%;">日期</th></tr>
+    <tr><td>1</td><td>交付咗 <code>out/</code> 半成品</td><td>永遠交 <code>out_ticked/</code>，並做像素黑度驗證</td><td>2026-10-29</td></tr>
+    <tr><td>2</td><td>改完 script 冇重跑 draw_ticks</td><td>draw_ticks 一定要喺全部 fill 之後</td><td>2026-10-23</td></tr>
+    <tr><td>3</td><td>IFF p2 填咗 MPF 註冊編號</td><td>IFF 嗰格係 Agent code（368836／380952）</td><td>2026-10-23</td></tr>
+    <tr><td>4</td><td>RS 最尾欄填咗 3000</td><td>CS1 = 附加費，<b>留空</b>；合計只填 TC1</td><td>2026-10-23</td></tr>
+    <tr><td>5</td><td>地址全部塞落 Street 欄</td><td>分欄：Street / District / City / Country</td><td>2026-10-23</td></tr>
+    <tr><td>6</td><td>用咗採集表嘅英文名 "Jack"</td><td>冇官方文件支持嘅名一律唔採用</td><td>2026-10-23</td></tr>
+    <tr><td>7</td><td>中文名用咗簡體（跟着護照）</td><td>HK 表格一律用繁體（跟 HKID／NNC1）</td><td>2026-10-23</td></tr>
+    <tr><td>8</td><td>p24 Email 同 Date 欄互調</td><td><code>fill_6_5</code>=Date 留空、<code>undefined_67</code>=Email</td><td>2026-10-23</td></tr>
+    <tr><td>9</td><td>ERA p11 剔咗 (iii) 而非 (i)</td><td>剔 (i) Same as Scheme Authorized Person 1</td><td>2026-10-23</td></tr>
+    <tr><td>10</td><td>p8 頂部當咗主事人段去重填</td><td>p8 頂部係 p7 聯絡人延續 → 剔「相同」後留空</td><td>2026-10-23</td></tr>
+    <tr><td>11</td><td>電夏 ERA／REEA 大量漏剔</td><td>用 <code>audit_ticks.py</code> 逐頁列全部 <code>/Btn</code> + label 人肉過</td><td>2026-10-16</td></tr>
+    <tr><td>12</td><td>DDA Upper Limit 填咗 BR 號</td><td>嗰格係金額，銀行會彈件</td><td>—</td></tr>
+    <tr><td>13</td><td>手寫批注未 crop 就讀 → 讀錯金額</td><td>必須 crop + upscale ≥2.2x 先讀</td><td>—</td></tr>
+    <tr><td>14</td><td>Pages 部署擺咗 repo root</td><td>要擺 <code>site/manulife-kb/</code>，擺 root 會 live 404</td><td>2026-10-29</td></tr>
+    <tr><td>15</td><td>版本混淆：13 頁 RS-26V3 vs 2 頁 RS-NEW</td><td>天乙用 2 頁 MPF RS NEW (05/2022)，code *CE2205*</td><td>2026-10-29</td></tr>
+  </table>
+  <div class="alert">
+    <b>技術層面嘅坑（寫 code 時）</b>
+    <ul class="tight" style="margin-top:4px;">
+      <li><code>pdffill.widgets()</code> 係 <b>list of dict</b>，唔係 dict。用 <code>int(w["page"])</code> 做 key，否則所有頁 checkbox 掉失、審計永遠報 0。</li>
+      <li><b>reportlab <code>showPage()</code> 會重設字型</b> → <code>wrap()</code> 每次 drawString 前要 <code>setFont</code>，否則續頁首行中文變亂碼。</li>
+      <li><b>MSJH 缺字</b>：<code>✓ ⚠ ▶ ◾ ▪</code> 全部 NO。可用：<code>√ ※ ■ □ • ★ ◆ ●</code>。</li>
+      <li>表格文字有字元間隔（<code>E L 0 9 5 8 1 3 2</code>）→ 比對前先 <code>re.sub(r'\s+','',t)</code> 再去埋 <code>/()-,.</code>。</li>
+      <li>分唔清「表格預印」定「我填」→ 用 pypdf 剷走 <code>/Annots</code> 再抽文字，仍然存在 = 預印。</li>
+      <li>⚠️ <b>唔好用 pymupdf</b>（Windows DLL load failed），用 pypdfium2。</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============ 15 ============ -->
+<div class="card" id="s15">
+  <h2><span class="num">15</span> 新 CASE 起手式</h2>
+  <h3>15.1 必須收到嘅來源文件（缺一不可）</h3>
+  <table>
+    <tr><th style="width:26%;">文件</th><th>拎咩</th><th style="width:26%;">用途</th></tr>
+    <tr><td><b>CR 公司註冊證明書</b></td><td>CI 編號、公司中英文名、成立日期</td><td>ERA p3、DDA undefined_8</td></tr>
+    <tr><td><b>BR 商業登記證</b></td><td>BR 編號（含分行碼）、業務性質</td><td>ERA p3、IFF p1、06</td></tr>
+    <tr><td><b>NNC1 法團成立表格</b></td><td>第 3 項註冊地址、第 6 項股東、第 8 項首任董事、第 25 項通訊地址</td><td>ERA p4/p5/p8/p10、07</td></tr>
+    <tr><td><b>董事／成員 HKID</b></td><td>姓名（繁）、號碼、DOB、性別</td><td>全部</td></tr>
+    <tr><td><b>僱傭合約</b></td><td>入職日期、職位、月薪、經常居住地</td><td>REEA p16、RS、ERA p10</td></tr>
+    <tr><td><b>銀行帳戶資料</b></td><td>Bank Code、帳號</td><td>DDA（拆 Branch／Account）</td></tr>
+    <tr><td>（如有）<b>護照</b></td><td>冇 HKID 時備用</td><td>—</td></tr>
+  </table>
+  <div class="alert">
+    ⚠️ <b>唯一董事係非香港居民（冇 HKID）點算？</b><br>
+    唔可以將中國身份證填落「香港身份證號碼」欄 → 改為委任公司內<b>持有 HKID 嘅僱員</b>做被授權人／計劃獲授權人；而<b>簽署人仍然係董事</b>。
+  </div>
+  <h3>15.2 開工六步</h3>
+  <ol class="tight">
+    <li>開資料夾（跟第 3 節結構），<b>複製 TIANYI_CASE/tools/</b></li>
+    <li>由 raw/ 拎官方空白表入 <code>forms/</code>（唔使登 manutouch）</li>
+    <li>改各 fill script 嘅<b>常數區</b>（CO_EN / CO_ZH / BR_NO / 人名 / HKID / DOB / 銀行 / 中介人唔使改）</li>
+    <li>用 <code>fieldmap.py</code> + <code>pagetext.py</code> 抽空白表欄位↔label，<b>核對表格版本有冇變（換版就要改 draw_ticks 座標）</b></li>
+    <li><code>python tools/build_all.py</code></li>
+    <li>跑第 13 節<b>五項驗收 + 三重驗證</b>，過晒先交付</li>
+  </ol>
+  <h3>15.3 交付 packaging</h3>
+  <ul class="tight">
+    <li>zip 包 <code>out_ticked/</code> 全部 9 份，命名 <code>&lt;公司名&gt;_MPF開戶文件包_&lt;YYYYMMDD&gt;_vN.zip</code></li>
+    <li>交付後 <code>unzip -t</code> 驗 zip 完整</li>
+    <li>附送本守則連結（作為「填寫依據」畀客人核對）</li>
+  </ul>
+</div>
+
+<!-- ============ 16 銷售守則 ============ -->
+<div class="card" id="s16">
+  <h2><span class="num">16</span> 銷售守則（見客用）</h2>
+
+  <h3>16.1 鐵律 10 條（必背）</h3>
+  <ul class="tight">
+    <li><b>1. 唔可以為轉而轉。</b>任何誘導客戶純粹為獎賞／佣金而搬錢 = churning，違反積金局中介人操守，可停牌。</li>
+    <li><b>2. 唔可以兜圈造假。</b>「轉走再轉返」賺回贈，積金易平台專門識別跨計劃可疑個案，一定會被標記。</li>
+    <li><b>3. 如實講清回贈發放方式。</b>紅利回贈係分三期（2027/2029/2031）入利息基金，唔可以淨講總數當現金。</li>
+    <li><b>4. 用官方名。</b>「八重天」等坊間簡稱查無此名，對客一律用官方名（尊尚PLUS／個人帳戶整合升級獎賞／全自由行）。</li>
+    <li><b>5. 講清楚適用對象。</b>尊尚PLUS 只適用 PA + TVC；純供款帳戶（僱主計劃）成員跟僱主收費率。</li>
+    <li><b>6. 提醒註冊責任。</b>2027 年起每年生日月份要重新註冊，唔註冊當年冇回贈——呢點一定要主動提。</li>
+    <li><b>7. 唔好承諾冇日期嘅嘢。</b>次階段全自由行只係「2027 年中交立法會」，無實施日期。</li>
+    <li><b>8. 轉移有真空期。</b>跨受託人轉移約 1–2 星期起（舊制 6–8 星期），期間資金完全唔投資，有低賣高買風險——必須講。</li>
+    <li><b>9. 唔好亂估費率。</b>費率表每月可能變，引用前對返本守則最新版或叫 AI 複查。</li>
+    <li><b>10. 申報要如實。</b>健康／資料申報唔實，日後索償有爭拗；MPF 相關身分、年資以積金易記錄為準。</li>
+  </ul>
+
+  <h3>16.2 帳戶類型與優惠適用範圍</h3>
+  <table>
+    <tr><th>帳戶類型</th><th>係咩</th><th>尊尚PLUS</th><th>整合獎賞</th></tr>
+    <tr><td><b>供款帳戶</b>（僱主計劃）</td><td>現職僱主幫你開，僱主＋僱員強制性供款入呢度</td><td><span class="no">唔適用</span> 跟僱主現行收費率</td><td>唔適用</td></tr>
+    <tr><td><b>個人帳戶 PA</b></td><td>自己名義持有，可整合舊工嘅累算權益</td><td><span class="ok">適用</span>（2025-11-06 起開立）</td><td><span class="ok">適用</span> 轉入目標</td></tr>
+    <tr><td><b>TVC 可扣稅自願性供款</b></td><td>自願供款＋扣稅，年度上限 $60,000</td><td><span class="ok">適用</span>（2025-11-06 起開立）</td><td>視推廣而定</td></tr>
+    <tr><td><b>SVC</b>（前稱 FRC）</td><td>特別自願性供款</td><td>計入資產總和</td><td>—</td></tr>
+  </table>
+
+  <h3>16.3 優惠 1：資產階梯表（管理費優惠費率） <span class="ok">已核實</span></h3>
+  <table>
+    <tr><th>宏利強積金資產總和</th><th>A類基金優惠費率</th><th>B類保證基金</th><th>A類回贈率（對 1.44%）</th></tr>
+    <tr><td><b class="money">$500 萬或以上</b></td><td class="money">1.27%</td><td class="money">1.19%</td><td>0.17%</td></tr>
+    <tr><td>$200 萬 – 500 萬以下</td><td>1.30%</td><td>1.22%</td><td>0.14%</td></tr>
+    <tr><td>$100 萬 – 200 萬以下</td><td>1.33%</td><td>1.25%</td><td>0.11%</td></tr>
+    <tr><td>$50 萬 – 100 萬以下</td><td>1.36%</td><td>1.28%</td><td>0.08%</td></tr>
+    <tr><td>$25 萬 – 50 萬以下</td><td>1.39%</td><td>1.31%</td><td>0.05%</td></tr>
+    <tr><td>$10 萬 – 25 萬以下</td><td>1.42%</td><td>1.34%</td><td>0.02%</td></tr>
+    <tr><td>$5 萬 – 10 萬以下</td><td>1.45%</td><td>1.37%</td><td>0.00%（打和）</td></tr>
+    <tr><td>$5 萬以下</td><td colspan="3">未達門檻，無資產階梯優惠</td></tr>
+  </table>
+  <p class="note">💡 換算：資產 $50 萬，A類回贈率 0.08%／年 → 一年約 <b>$400</b>；$500 萬 → 0.17% → 一年約 <b>$8,500</b>。全部自動以紅利單位存入利息基金。<br>⚠️ 中華威力（1.49%）同康健護理（1.59%）現行費率較高，實際回贈率會大過上表。</p>
+
+  <h3>16.4 現行費率對照表 <span class="ok">已核實</span></h3>
+  <table>
+    <tr><th>基金</th><th>2025-11-06 至<br>2026-02-05</th><th>2026-02-06 至<br>2026-03-31</th><th>2026-04-01 起</th></tr>
+    <tr><td>A類一般股票／混合資產</td><td>1.75%</td><td>1.52%</td><td><b>1.44%</b></td></tr>
+    <tr><td>中華威力基金 CVF</td><td>1.90%</td><td>1.57%</td><td><b>1.49%</b></td></tr>
+    <tr><td>康健護理基金 HCF</td><td>1.90%</td><td>1.67%</td><td><b>1.59%</b></td></tr>
+    <tr><td>B類 穩健基金（保證）</td><td>1.75%</td><td>1.52%</td><td><b>1.44%</b></td></tr>
+  </table>
+  <p class="note">呢個係公價減費，<b>所有成員受惠，唔係尊尚PLUS 專利</b>——見客時要分開講，唔好當成自己嘅獨家著數。</p>
+
+  <h3>16.5 優惠 2：年資階梯表 <span class="ok">已核實</span></h3>
+  <table>
+    <tr><th>宏利強積金年資</th><th>紅利回贈率</th><th>分派方式</th><th>計法</th></tr>
+    <tr><td>0 – 5 年未滿</td><td>每 5 年 <b class="money">0.20%</b></td><td>每 5 年一次</td><td>結餘 × 0.20% ÷ 60 個月</td></tr>
+    <tr><td>5 – 10 年未滿</td><td>每 5 年 <b class="money">0.30%</b></td><td>每 5 年一次</td><td>結餘 × 0.30% ÷ 60 個月</td></tr>
+    <tr><td>10 – 15 年未滿</td><td>每 5 年 <b class="money">0.40%</b></td><td>每 5 年一次</td><td>結餘 × 0.40% ÷ 60 個月</td></tr>
+    <tr><td>15 – 20 年未滿</td><td>每 5 年 <b class="money">0.50%</b></td><td>每 5 年一次</td><td>結餘 × 0.50% ÷ 60 個月</td></tr>
+    <tr><td><b>20 年或以上</b>（未滿 65 歲）</td><td><b class="money">每年 0.12%</b></td><td>每年</td><td>結餘 × 0.12% ÷ 12 個月</td></tr>
+    <tr><td><b>65 歲或以上</b>（不論年資）</td><td><b class="money">每年 0.15%</b></td><td>每年</td><td>結餘 × 0.15% ÷ 12 個月</td></tr>
+  </table>
+  <p class="note">⛔ <b>唔計入年資回贈嘅基金：</b>MPF核心累積基金、MPF 65歲後基金、MPF保守基金、DIS 預設投資策略；<b>65 歲或以上</b>成員另須排除 MPF 利息基金及 MPF 退休收益基金。</p>
+
+  <h3>16.6 註冊時間表 <span class="ok">已核實</span></h3>
+  <table>
+    <tr><th>時間</th><th>要自己做啲咩</th><th>後果</th></tr>
+    <tr><td><b>2025-11-06 至 2026-12-31</b></td><td><span class="ok">自動註冊，唔使做嘢</span></td><td>首次回贈 2026-11-01 起 60 日內分派</td></tr>
+    <tr><td><b>2026-12-01</b></td><td>第一個註冊窗口開放</td><td>—</td></tr>
+    <tr><td><b>2027 年起每年</b></td><td>必須喺<b>生日月份重新註冊</b>；窗口喺生日月份<b>前一個月</b>開</td><td><span class="no">唔註冊 = 該年回贈資格作廢</span></td></tr>
+  </table>
+
+  <h3>16.7 個人帳戶整合升級獎賞 <span class="no">登記已於 2026-10-31 截止</span></h3>
+  <div class="danger">
+    ⚠️ <b>現況（2026-10-29）：呢輪推廣嘅登記期已經完咗。</b>已登記嘅客仍須喺 <b>2026-12-31 前完成轉移</b>。<b>新客已經入唔到呢輪——唔可以再對新客講「有 $120,000 回贈」。</b>
+  </div>
+  <table>
+    <tr><th>轉入累算權益總額</th><th>一次性紅利單位回贈</th><th>狀態</th></tr>
+    <tr><td>$1,000,001 – $2,000,000</td><td class="money">$6,300</td><td rowspan="4">登記期 2026-09-01 至 <b>10-31（已截止）</b><br>轉移須 2026-12-31 前完成</td></tr>
+    <tr><td>$2,000,001 – $5,000,000</td><td class="money">$21,000</td></tr>
+    <tr><td>$5,000,001 – $10,000,000</td><td class="money">$90,000</td></tr>
+    <tr><td>$10,000,001 或以上</td><td class="money">$120,000</td></tr>
+  </table>
+  <p class="note">📌 發放方式（一定要照直講）：回贈以<b>自願性供款</b>存入<b>宏利 MPF 利息基金</b>，分<b>三等分</b>於 <b>2027-06-30、2029-06-30、2031-06-30</b> 或之前存入。每位合資格客戶只可獲得回贈<b>一次</b>。</p>
+
+  <h3>16.8 全自由行時間表 <span class="ok">已核實</span></h3>
+  <table>
+    <tr><th>階段</th><th>日期</th><th>受惠對象</th><th>可轉咩</th></tr>
+    <tr><td><b>首階段</b></td><td><b>2026-12-21</b><br>（已刊憲）</td><td>2025-05-01 或之後<b>入職／轉工</b>嘅僱員<br>約 <b>100 萬人</b></td><td>每個公曆年<b>一次</b>，將<b>僱主</b>強制性供款產生嘅累算權益<b>全數</b>由供款帳戶轉去自選計劃嘅個人帳戶</td></tr>
+    <tr><td><b>次階段</b></td><td>修例草案擬 <b>2027 年中</b>提交立法會<br><span class="no">未有實施日期</span></td><td>2025-05-01 前已入職嘅其餘僱員</td><td>待定</td></tr>
+  </table>
+  <p class="note">⚠️ <b>唔好同客講「明年人人得」</b>——次階段連草案都未交。轉移窗口：2026-12-21 至 12-31 可辦 2026 公曆年嘅轉移。</p>
+
+  <h3>16.9 客群決策樹</h3>
+  <table>
+    <tr><th>客戶狀況</th><th>可以做（正確做法）</th><th>唔可以做</th></tr>
+    <tr><td><b>A. 已經用緊宏利（僱主計劃）</b><br>冇 PA／TVC</td><td>① 幫佢<b>開 TVC</b>　② 查有冇舊工散落喺其他公司嘅個人帳戶 → 真整合　③ 教佢 2027 年生日月份記得註冊</td><td>為咗賺獎賞叫佢「轉走再轉返」<span class="no">紅線</span></td></tr>
+    <tr><td><b>B. 用緊其他公司</b><br>有舊個人帳戶喺第 2–3 間</td><td>① 整合入宏利 PA（等新一輪推廣）　② 階梯費率平啲　③ 加開 TVC</td><td>隱瞞真空期風險／淨講回贈總數</td></tr>
+    <tr><td><b>C. 2025-05-01 後轉過工</b><br>（全自由行首階段合資格）</td><td>① <b>2026-12-21 後</b>可將僱主供款全數轉入自選計劃　② 2026 年 quota 要喺 12-21 至 12-31 內辦</td><td>為轉而轉／為佣金而轉<span class="no">紅線</span></td></tr>
+    <tr><td><b>D. 2025-05-01 前入職</b><br>一直冇轉工</td><td>① 而家只可用「半自由行」轉<b>自己</b>嗰份（每年一次）　② 開 TVC　③ 如實講：全自由行要等次階段</td><td>承諾「好快輪到你」<span class="no">紅線</span></td></tr>
+    <tr><td><b>E. 現有宏利 PA／TVC</b><br>（2025-11-06 前開）</td><td>① 第一年行過渡回贈率，2027 入正階梯　② 提醒 2027 年起每年生日月份註冊</td><td>當佢已經享正階梯去計數</td></tr>
+  </table>
+
+  <h3>16.10 可做 vs 唔做</h3>
+  <table>
+    <tr><th style="width:50%;">✅ 正確做法</th><th style="width:50%;">🚫 紅線（做咗大鑊）</th></tr>
+    <tr><td>幫客開 TVC 增收扣稅額</td><td>叫客「轉去第 2 間再轉返嚟」賺回贈</td></tr>
+    <tr><td>整合客真係散落喺其他公司嘅舊帳戶</td><td>引導客為獎賞而搬動原本已經好好嘅資產</td></tr>
+    <tr><td>講清回贈分三期、入利息基金、非現金</td><td>淨講「有 $120,000 回贈」當即時現金</td></tr>
+    <tr><td>講清轉移有 1–2 星期起真空期＋低賣高買風險</td><td>隱瞞真空期風險</td></tr>
+    <tr><td>用官方名（尊尚PLUS、全自由行、整合升級獎賞）</td><td>用「八重天」等坊間／自創名</td></tr>
+    <tr><td>提醒客每年生日月份要註冊</td><td>唔提註冊責任，等客自己蝕咗</td></tr>
+  </table>
+  <div class="danger">
+    <b>🚨 案例警示：</b>「客已經用緊宏利，我 12-21 轉佢去第 2 間，2027-01-01 轉返宏利，賺整合獎賞」<br>
+    → <b>四個致命位：</b>① 嗰輪推廣登記 10-31 已截止，一蚊都冇；② 跨受託人轉移需 1–2 星期起，根本唔可能 10 日內完成來回；③ 客白白承受 6–8 星期真空期＋冇咗階梯優惠；④ 積金易平台專門識別跨計劃可疑個案，屬典型 churning，可停牌。<br>
+    → <b>結論：零獎賞、蝕客、賠上個牌。正確做法係幫佢開 TVC。</b>
+  </div>
+
+  <h3>16.11 常見錯誤 Top 8（客戶／Sales 層面）</h3>
+  <ol class="tight">
+    <li><b>以為全自由行 = 即刻人人得。</b>首階段只涵蓋 2025-05-01 後入職／轉工嘅約 100 萬人。</li>
+    <li><b>以為可以一年轉幾次。</b>每個公曆年<b>一次</b>。</li>
+    <li><b>以為轉移即日完成。</b>實際 1–2 星期起，期間真空期。</li>
+    <li><b>以為 $120,000 係現金即日到手。</b>係紅利單位、分三期、到 2031 年。</li>
+    <li><b>以為供款帳戶都有尊尚PLUS。</b>供款帳戶跟僱主收費率，得 PA／TVC 有。</li>
+    <li><b>以為 $5 萬就有顯著著數。</b>$5–10 萬嗰級 ≈ 打和，著數由 $25 萬以上先明顯。</li>
+    <li><b>以為註冊一次搞掂一世。</b>2027 年起每年生日月份要重新註冊。</li>
+    <li><b>用「八重天」等非正式名。</b>官方無此名，對客講會構成誤導。</li>
+  </ol>
+
+  <h3>16.12 見客腳本（可直接讀）</h3>
+  <p><b>現有宏利客（主推 TVC）：</b><br>
+  「陳生，你而家份 MPF 喺宏利，今年宏利已經兩輪減管理費，公價平咗成 16–31%。但我睇你仲未開 TVC——開咗之後，你每年最多可以扣 $60,000 稅，慳返筆稅之餘，你個 MPF 資產總和會升一級，管理費再平多 0.03%，仲有紅利回贈自動入落你戶口。我幫你計下你開幾多最著數。」</p>
+  <p><b>其他公司客（等新推廣）：</b><br>
+  「你有幾份舊工嘅 MPF 散落喺唔同公司？整合埋一份，管理費階梯會跳高一級。宏利而家做緊整合獎賞推廣，但今輪登記 10 月 31 號截止咗——我幫你留意下一輪，一開就通知你。」</p>
+  <p><b>全自由行（12-21 後）：</b><br>
+  「12 月 21 號開始，如果你係 2025 年 5 月之後轉過工，你連<b>僱主</b>幫你供嗰份都可以全數轉去你自己揀嘅計劃，一年一次。但要諗清楚：轉嗰陣有 1–2 個星期資金唔投資，所以唔係為轉而轉，要睇邊間收費平、基金啱你。」</p>
+</div>
+
+<!-- ============ 17 ============ -->
+<div class="card" id="s17">
+  <h2><span class="num">17</span> 待核實清單 + 資料來源</h2>
+  <table>
+    <tr><th>項目</th><th>狀態</th><th>點處理</th></tr>
+    <tr><td>TVC $1,800 回贈推廣期</td><td><span class="warn">待核實</span></td><td>查宏利 MPF 推廣頁最新一期</td></tr>
+    <tr><td>渣打渠道 $138,000</td><td><span class="warn">待核實</span></td><td>未搵到官方頁，引用前必查</td></tr>
+    <tr><td>2026-04-01 第二輪減費幅度</td><td><span class="warn">待核實</span></td><td>對返計劃說明書 FER 表</td></tr>
+    <tr><td>尊尚PLUS 額外 8 基點減幅</td><td><span class="warn">待核實</span></td><td>喺單張搵返具體字眼</td></tr>
+    <tr><td>2027 年新一輪整合推廣</td><td><span class="no">未公佈</span></td><td>等宏利公佈，唔可以自己估</td></tr>
+    <tr><td>次階段全自由行實施日期</td><td><span class="no">未定</span></td><td>2027 年中交立法會後再跟</td></tr>
+  </table>
+  <p class="note">以上項目一旦有更新，要即刻改版本號並重新部署到資料庫。</p>
+
+  <h3>資料來源（2026-10-26 至 29 核實）</h3>
+  <ul class="tight" style="font-size:13px;">
+    <li>宏利尊尚PLUS官方單張（資產／年資階梯，HKR-M-368/04/26C）：<a href="https://www.manulife.com.hk/content/dam/insurance/hk/zh-hk/documents/services/forms/manulife-privileged-rates-program-leaflet.pdf">manulife-privileged-rates-program-leaflet.pdf</a></li>
+    <li>宏利新聞稿《宏利宣佈強積金減管理費及升級優惠》2026-02-04：<a href="https://www.manulife.com.hk/zh-hk/corporations/about/newsroom/manulife-announces-mpf-management-fees-reduction-and-benefits-enhancement.html">manulife.com.hk 新聞稿</a></li>
+    <li>積金局「全自由行」官方專頁：<a href="https://www.mpfa.org.hk/mpf-system/mpf-full-portability">mpfa.org.hk/mpf-system/mpf-full-portability</a></li>
+    <li>積金局《善用僱員自選安排管理強積金》（轉移需時、真空期）：<a href="https://www.mpfa.org.hk/info-centre/publications-articles/mpfa-articles/2024_3_13">mpfa.org.hk 文章</a></li>
+    <li>香港01《強積金12.21首階段「全自由行」》2026-10-20：<a href="https://www.hk01.com/社會新聞/60403306">hk01.com</a></li>
+    <li>香港經濟日報《MPF整合優惠一文看清6間受託人》：<a href="https://inews.hket.com/article/4208072">inews.hket.com/article/4208072</a></li>
+    <li>中通社《香港首階段強積金全自由行今年12月推出》2026-10-25（積金局主席網志）：<a href="https://www.hkcna.hk/hk/content/s6addc923e4b0e4e6f3d63fa5.html">hkcna.hk</a></li>
+    <li><b>黃金標準源：</b>天乙創新 TIANYI case <code>C:/Users/user/Downloads/TIANYI_CASE/</code>（工具鏈 tools/ + 交付件 out_ticked/）</li>
+  </ul>
+</div>
+
+<footer>
+  <b>免責：</b>本守則為內部作業參考，一切以宏利官方單張、計劃說明書及條款細則為準。投資涉及風險。優惠受條款及細則約束，宏利可提前一個月通知修改或取消。<br>
+  <b>版本：</b>v2.0（天乙標準）· 建立 2026-10-29 · 取代 v1.0 銷售守則 · 線上版本見下方連結<br>
+  <b>下次複查：</b>費率／推廣每月一次；表格版本每次出新 case 前核對 ±；本守則喺 KEN 明確指示前保持不變。
+</footer>
+
+</div>
+</body>
+</html>
